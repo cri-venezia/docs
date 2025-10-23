@@ -1,0 +1,71 @@
+# Nome del Workflow
+name: Deploy to GitHub Pages
+
+# Trigger: Esegui al push sul branch 'main' o manualmente
+on:
+  push:
+    branches:
+      - main  # O 'master' a seconda del tuo repository
+  workflow_dispatch:
+
+# Permessi necessari per il deploy
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Scarica il codice
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Imposta Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Usa una versione LTS di Node
+          cache: 'npm'
+
+      # 3. Installa le dipendenze
+      - name: Install dependencies
+        # 'npm ci' è ottimizzato per i server (più veloce e sicuro)
+        run: npm ci
+
+      # 4. Compila il progetto
+      - name: Build project
+        run: |
+          # Estrae il nome del repo (es. 'cri-docs') da 'utente/cri-docs'
+          REPO_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d'/' -f2)
+          
+          # Inietta il nome del repo come variabile d'ambiente
+          # in modo che vite.config.js possa leggerlo
+          echo "GITHUB_REPOSITORY_NAME=${REPO_NAME}" >> $GITHUB_ENV
+          
+          # Esegue il build (che include lo script generate-menu.js)
+          npm run build
+        env:
+          NODE_ENV: production # Assicura che 'mode' sia 'production'
+
+      # 5. Crea 404.html per History Mode
+      - name: Create 404.html for History Mode
+        # Questo è il "trucco" per far funzionare Vue Router su GitHub Pages
+        # Copia index.html in 404.html
+        run: cp dist/index.html dist/404.html
+
+      # 6. Configura GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 7. Carica l'artefatto (la cartella 'dist')
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      # 8. Esegui il deploy su GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

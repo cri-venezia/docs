@@ -1,0 +1,52 @@
+/* Importiamo le direttive base di Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Spostiamo gli stili personalizzati di 'prose' (che erano in style.css) qui.
+  Ora saranno gestiti da Tailwind.
+*/
+.prose {
+  @apply text-gray-800;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  @apply font-bold text-gray-900;
+}
+
+.prose a {
+  @apply text-blue-600 hover:text-blue-800;
+}
+
+.prose pre {
+  @apply bg-gray-900 text-white p-4 rounded-lg shadow-md;
+}
+
+.prose code {
+  @apply bg-gray-200 text-red-600 px-1 py-0.5 rounded-md;
+}
+
+.prose pre code {
+  @apply bg-transparent text-white p-0;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 pl-4 text-gray-600 italic;
+}
+
+.prose table {
+  @apply w-full border-collapse;
+}
+
+.prose th, .prose td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+.prose th {
+  @apply bg-gray-100 font-bold;
+}
+
+/* Stili per le immagini cliccabili (lightbox) */
+.prose img {
+  @apply rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl;
+}
