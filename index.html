@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sito Documentazione</title>
+    
+    <!-- 1. Carichiamo Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Carichiamo Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <!-- 3. Carichiamo Marked.js (per convertire Markdown in HTML) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- 4. Carichiamo GLightbox (per la lightbox delle immagini) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- 5. Colleghiamo il nostro file CSS personalizzato -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800">
+
+    <!-- Questo è il contenitore principale della nostra app Vue -->
+    <!-- 
+      Layout Mobile-First:
+      Su mobile (default): flex-col (header, poi main)
+      Su desktop (md:): flex-row (sidebar, poi main)
+    -->
+    <div id="app" class="flex flex-col md:flex-row min-h-screen">
+        
+        <!-- 1. Header Mobile (Visibile solo su mobile) -->
+        <header class="md:hidden flex items-center justify-between p-4 bg-white shadow-md sticky top-0 z-10">
+            <!-- Logo nell'header mobile -->
+            <img src="https://crive.b-cdn.net/wp-content/uploads/2024/09/h60-scuro-1.png" 
+                 alt="Logo" 
+                 class="h-8" 
+                 onerror="this.style.display='none'">
+            
+            <!-- Pulsante Hamburger per aprire/chiudere il menu -->
+            <button @click="toggleMobileMenu" class="p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                <!-- Icona Hamburger (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </header>
+
+        <!-- 2. Overlay (mostrato quando il menu mobile è aperto) -->
+        <div v-if="isMobileMenuOpen" 
+             @click="toggleMobileMenu"
+             class="fixed inset-0 bg-black/50 z-20 md:hidden">
+        </div>
+
+        <!-- 
+          3. Sidebar di Navigazione 
+          Layout Mobile-First:
+          - Su mobile (default): fissa, fuori schermo (-translate-x-full), z-30
+          - Su mobile (attiva): transizione a translate-x-0 (visibile)
+          - Su desktop (md:): fissa, visibile (translate-x-0), z-0
+        -->
+        <nav class="fixed top-0 left-0 w-72 bg-white shadow-lg p-6 h-screen z-30
+                    transform transition-transform duration-300 ease-in-out
+                    md:w-72 md:h-screen md:fixed md:translate-x-0 md:z-0"
+             :class="{ 'translate-x-0': isMobileMenuOpen, '-translate-x-full': !isMobileMenuOpen }">
+            
+            <!-- Logo (ora visibile solo su desktop nella sidebar) -->
+            <div class="mb-4 text-center hidden md:block">
+                <img src="https://crive.b-cdn.net/wp-content/uploads/2024/09/h60-scuro-1.png" 
+                     alt="Logo" 
+                     class="h-10 inline-block" 
+                     onerror="this.style.display='none'">
+            </div>
+            <h1 class="text-3xl font-bold mb-6 text-blue-600 text-center hidden md:block">Documentazione</h1>
+            
+            <!-- Intestazione per il menu mobile (visibile solo su mobile) -->
+            <div class="flex justify-between items-center mb-6 md:hidden">
+                <h2 class="text-xl font-bold text-blue-600">Menu</h2>
+                <button @click="toggleMobileMenu" class="p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                    <!-- Icona Chiudi (X) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Gruppi di navigazione (logica accordion) -->
+            <div v-for="group in pages" :key="group.category" class="mb-2">
+                <!-- Bottone per l'accordion -->
+                <button @click="toggleCategory(group.category)" 
+                        class="flex items-center justify-between w-full text-left text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors">
+                    <span>{{ group.category }}</span>
+                    <!-- Icona Freccia (ruota in base allo stato) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
+                         :class="['w-4 h-4 transform transition-transform', openCategories[group.category] ? 'rotate-180' : 'rotate-0']">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </button>
+                
+                <!-- Lista dei file, mostrata/nascosta con v-if -->
+                <transition
+                    enter-active-class="transition ease-out duration-100"
+                    enter-from-class="transform opacity-0 -translate-y-2"
+                    enter-to-class="transform opacity-100 translate-y-0"
+                    leave-active-class="transition ease-in duration-75"
+                    leave-from-class="transform opacity-100 translate-y-0"
+                    leave-to-class="transform opacity-0 -translate-y-2"
+                >
+                    <ul v-if="openCategories[group.category]" class="pl-3">
+                        <!-- Cicliamo sull'array 'files' di ogni gruppo -->
+                        <li v-for="page in group.files" :key="page.file" class="mb-2">
+                            <!-- Passiamo il group.path e page.file a loadPage -->
+                            <a href="#"
+                               @click.prevent="loadPage(group.path, page.file); closeMobileMenu()"
+                               :class="['block w-full text-left p-3 rounded-lg transition-colors duration-200 text-sm', 
+                                        (group.path ? group.path + '/' + page.file : page.file) === currentFile ? 'bg-blue-600 text-white shadow-md' : 'text-gray-700 hover:bg-gray-100']">
+                                {{ page.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </transition>
+            </div>
+
+        </nav>
+
+        <!-- 
+          4. Contenuto Principale 
+          Layout Mobile-First:
+          - Su mobile (default): padding normale (p-6 sm:p-10)
+          - Su desktop (md:): padding-left per fare spazio alla sidebar fissa (md:pl-80)
+        -->
+        <main class="flex-1 p-6 sm:p-10 md:pl-80">
+            <!-- Il div 'prose' è dove iniettiamo l'HTML convertito -->
+            <!-- v-html è la direttiva Vue per renderizzare HTML grezzo -->
+            <div class="prose max-w-none" v-html="renderedMarkdown"></div>
+        </main>
+    </div>
+
+    <!-- 
+      JavaScript della nostra App Vue
+    -->
+    <script>
+        // Estraiamo createApp da Vue
+        const { createApp } = Vue;
+
+        // Creiamo la nostra app Vue
+        createApp({
+            data() {
+                return {
+                    // Struttura delle pagine
+                    pages: [
+                        { 
+                            category: 'Generale',
+                            path: '', // Percorso base per questa categoria
+                            files: [
+                                { title: 'Introduzione', file: 'introduction.md' },
+                                { title: 'Guida Rapida', file: 'getting-started.md' }
+                            ]
+                        },
+                        {
+                            category: 'cri-trasporti', // Esempio: nome plugin
+                            path: 'cri-trasporti', // Nome della cartella in /docs
+                            files: [
+                                { title: 'Installazione', file: 'install.md' },
+                                { title: 'Configurazione', file: 'config.md' }
+                            ]
+                        }
+                    ],
+                    currentFile: '', // Memorizza il percorso completo, es. "cri-trasporti/install.md"
+                    renderedMarkdown: '<p class="text-xl text-gray-500">Seleziona una pagina per iniziare...</p>',
+                    lightboxInstance: null,
+                    markedRenderer: null,
+                    isMobileMenuOpen: false, // Stato per il menu mobile
+                    openCategories: {} // Stato per gli accordion
+                }
+            },
+            created() {
+                // Creiamo un renderer personalizzato per Marked
+                // per avvolgere le immagini in un link <a> per GLightbox
+                this.markedRenderer = new marked.Renderer();
+                const originalImageRenderer = this.markedRenderer.image.bind(this.markedRenderer);
+
+                // Sovrascriviamo il metodo image di marked
+                this.markedRenderer.image = (href, title, text) => {
+                    const imgHtml = originalImageRenderer(href, title, text);
+                    // Restituiamo l'immagine avvolta in un link <a>
+                    return `<a href="${href}" class="glightbox" data-gallery="page-gallery">${imgHtml}</a>`;
+                };
+
+                // Diciamo a marked di usare sempre il nostro renderer personalizzato
+                marked.use({ renderer: this.markedRenderer });
+            },
+            methods: {
+                // Metodi per gestire lo stato del menu mobile
+                toggleMobileMenu() {
+                    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+                },
+                closeMobileMenu() {
+                    if (this.isMobileMenuOpen) {
+                        this.isMobileMenuOpen = false;
+                    }
+                },
+
+                // Metodo per gestire l'accordion
+                toggleCategory(categoryName) {
+                    // Usiamo this.$set per reattività su oggetti nidificati (buona pratica)
+                    // Ma in Vue 3, l'assegnazione diretta è solitamente reattiva.
+                    // Per sicurezza, controlliamo se la chiave esiste
+                    if (this.openCategories[categoryName] === undefined) {
+                        this.openCategories[categoryName] = false;
+                    }
+                    this.openCategories[categoryName] = !this.openCategories[categoryName];
+                },
+
+                // Metodo per caricare e renderizzare un file
+                async loadPage(groupPath, file) {
+                    // 1. Costruiamo il percorso completo del file
+                    const fullPath = groupPath ? `${groupPath}/${file}` : file;
+
+                    this.currentFile = fullPath;
+                    this.renderedMarkdown = '<p class="text-xl text-gray-500">Caricamento...</p>';
+                    
+                    try {
+                        // 2. Risolviamo l'URL relativo in un URL assoluto
+                        const fileUrl = new URL(`./docs/${fullPath}`, window.location.href);
+                        
+                        // 3. Usiamo fetch per prendere il file
+                        const response = await fetch(fileUrl);
+                        
+                        if (!response.ok) {
+                            throw new Error(`Impossibile trovare il file ${fullPath}`);
+                        }
+                        
+                        const markdownText = await response.text();
+                        
+                        // 4. Usiamo marked.parse() per convertire Markdown in HTML
+                        this.renderedMarkdown = marked.parse(markdownText);
+
+                        // 5. Gestione Lightbox
+                        // Distruggiamo l'istanza GLightbox precedente
+                        if (this.lightboxInstance) {
+                            this.lightboxInstance.destroy();
+                        }
+
+                        // Aspettiamo che Vue aggiorni il DOM
+                        this.$nextTick(() => {
+                            // Re-inizializziamo GLightbox
+                            this.lightboxInstance = GLightbox({
+                                selector: '.glightbox',
+                                touchNavigation: true,
+                                loop: true,
+                                gallery: 'page-gallery'
+                            });
+                        });
+
+                    } catch (error) {
+                        console.error('Errore nel caricamento della pagina:', error);
+                        this.renderedMarkdown = `<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg">
+                                                    <h3 class="font-bold">Errore</h3>
+                                                    <p>Impossibile caricare il file: <strong>${fullPath}</strong>.</p>
+                                                    <p class="text-sm mt-2">Assicurati che il file esista nella cartella /docs e che il nome sia corretto in 'index.html'.</p>
+                                                </div>`;
+                    }
+                }
+            },
+            mounted() {
+                // Inizializziamo gli accordion: apriamo il primo di default
+                if (this.pages.length > 0) {
+                    this.pages.forEach((group, index) => {
+                        this.openCategories[group.category] = (index === 0); // Apre solo il primo
+                    });
+                }
+
+                // Carica la prima pagina all'avvio
+                if (this.pages.length > 0 && this.pages[0].files.length > 0) {
+                    this.loadPage(this.pages[0].path, this.pages[0].files[0].file);
+                }
+            }
+        }).mount('#app'); // Montiamo l'app Vue sul div #app
+    </script>
+</body>
+</html>
+
