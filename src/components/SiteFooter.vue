@@ -8,7 +8,7 @@
         <div class="text-sm text-center md:text-left">
           © {{ new Date().getFullYear() }} Croce Rossa Italiana - Comitato di Venezia
         </div>
-        
+        <br>
         <div class="flex items-center space-x-2 text-sm">
           <span class="text-copy">Runs on Cloudflare®</span>
           <img :src="cloudflareLogo" alt="Cloudflare Logo" class="h-5 w-auto">
