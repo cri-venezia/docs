@@ -32,7 +32,7 @@
     </div>
 
     <!-- Menu a tendina Mobile (solo su Home) -->
-    <div v-if="isHomePage && showMobileMenu" class="md:hidden bg-white shadow-lg pb-4">
+    <div v-if="isHomePage && showMobileMenu" class="md:hidden bg-cri-white shadow-lg pb-4">
       <nav class="flex flex-col space-y-2 px-4">
         <router-link v-for="category in menu" :key="category.path" 
                      :to="getFirstFileUrl(category)"

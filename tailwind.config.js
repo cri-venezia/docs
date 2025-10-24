@@ -12,6 +12,8 @@ module.exports = {
       colors: {
         'cri-red': '#CC0000',
         'cri-white': '#FFFFFF',
+        'footer-dark': '#111317',
+        'copy': '#ffffff73'
       }
     },
   },
