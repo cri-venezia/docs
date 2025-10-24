@@ -18,11 +18,11 @@
       <!-- Sezione Destra: Icone Social -->
       <div class="flex space-x-6">
         
-        <a href="https://www.facebook.com/CRIVenezia" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Facebook">
+        <a href="https://www.facebook.com/crivenezia" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Facebook">
           <font-awesome-icon :icon="['fab', 'facebook']" class="w-5 h-5" />
         </a>
         
-        <a href="https://www.instagram.com/cri.venezia" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Instagram">
+        <a href="https://www.instagram.com/cri_venezia" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Instagram">
           <font-awesome-icon :icon="['fab', 'instagram']" class="w-5 h-5" />
         </a>
 
@@ -30,7 +30,7 @@
           <font-awesome-icon icon="globe" class="w-5 h-5" />
         </a>
         
-        <a href="https://github.com/CRIVenezia" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="GitHub">
+        <a href="https://github.com/cri-venezia" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="GitHub">
           <font-awesome-icon :icon="['fab', 'github']" class="w-5 h-5" />
         </a>
 

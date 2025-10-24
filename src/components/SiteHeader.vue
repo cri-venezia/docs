@@ -3,7 +3,11 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <!-- Logo -->
       <router-link to="/" class="flex items-center space-x-2">
-        <img :src="logo" alt="Logo CRI Venezia" class="h-10 w-auto">
+        <!-- 
+          MODIFICA: Rimosso import, usato percorso statico da /public/ 
+          Assicurati che il logo sia in 'public/assets/logo-cri.png'
+        -->
+        <img src="https://crive.b-cdn.net/wp-content/uploads/2024/09/h60-scuro-1.png" alt="Logo CRI Venezia" class="h-10 w-auto">
         <span class="text-lg font-bold text-gray-700 hidden sm:block">Documentazione</span>
       </router-link>
 
@@ -45,7 +49,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import logo from '@/assets/logo-cri.png'; // Assicurati di avere il logo in 'src/assets/'
+// MODIFICA: Rimosso import del logo
 import menuData from '@/menu.json';
 
 // Props per gestire lo stato della sidebar
