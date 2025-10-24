@@ -2,10 +2,10 @@
   <div class="container mx-auto p-4 md:p-8">
     <div class="text-center my-12">
       <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-        Documentazione Plugin
+        Portale Documentazione dei Plugin
       </h1>
       <p class="text-xl text-gray-600">
-        Benvenuto nel portale della documentazione per i plugin sviluppati dal Comitato di Venezia.
+        Benvenuto/a nel portale della documentazione per i plugin sviluppati dal Comitato di Venezia.
       </p>
     </div>
 
@@ -16,7 +16,7 @@
         <div v-for="category in categories" :key="category.path" 
              class="bg-cri-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
           
-          <h3 class="text-xl font-bold text-cri-red mb-3">{{ category.category }}</h3>
+          <router-link :to="getFirstFileUrl(category)"><h3 class="text-xl font-bold text-cri-red mb-3">{{ category.category }}</h3></router-link>
           <p class="text-gray-600 mb-4 h-20 overflow-hidden">
             Esplora la documentazione relativa a {{ category.category.toLowerCase() }}.
           </p>
