@@ -22,11 +22,11 @@
           <font-awesome-icon :icon="['fab', 'facebook']" class="w-5 h-5" />
         </a>
         
-        <a href="https://www.instagram.com/cri_venezia" target="_blank" rel="noopener noreferrer" class="hover:text-red transition-colors" aria-label="Instagram">
+        <a href="https://www.instagram.com/cri_venezia" target="_blank" rel="noopener noreferrer" class="hover:text-cri-red transition-colors" aria-label="Instagram">
           <font-awesome-icon :icon="['fab', 'instagram']" class="w-5 h-5" />
         </a>
 
-        <a href="https://crivenezia.it" target="_blank" rel="noopener noreferrer" class="hover:text-red transition-colors" aria-label="Sito Web CRI Venezia">
+        <a href="https://crivenezia.it" target="_blank" rel="noopener noreferrer" class="hover:text-cri-red transition-colors" aria-label="Sito Web CRI Venezia">
           <font-awesome-icon icon="globe" class="w-5 h-5" />
         </a>
         
