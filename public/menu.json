@@ -1,0 +1,12 @@
+[
+  {
+    "category": "Generale",
+    "path": "generale",
+    "pages": [
+      {
+        "name": "Index",
+        "link": "generale/index.md"
+      }
+    ]
+  }
+]
