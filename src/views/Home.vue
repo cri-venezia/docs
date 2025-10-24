@@ -16,14 +16,14 @@
         <div v-for="category in categories" :key="category.path" 
              class="bg-cri-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
           
-          <h3 class="text-xl font-bold text-red-700 mb-3">{{ category.category }}</h3>
+          <h3 class="text-xl font-bold text-cri-red mb-3">{{ category.category }}</h3>
           <p class="text-gray-600 mb-4 h-20 overflow-hidden">
             Esplora la documentazione relativa a {{ category.category.toLowerCase() }}.
           </p>
           
           <!-- Linka al primo file della categoria (es. index.md) -->
           <router-link :to="getFirstFileUrl(category)"
-                       class="inline-block font-medium text-cri-red hover:text-cri-red transition-colors">
+                       class="inline-block font-medium text-cri-red hover:text-red-800 transition-colors">
             Inizia a leggere &rarr;
           </router-link>
         </div>
@@ -42,10 +42,19 @@ import menuData from '@/menu.json';
 const categories = ref(menuData);
 
 function getFirstFileUrl(category) {
-  if (category.files && category.files.length > 0) {
-    const firstFile = category.files[0]; // Lo script ora ordina index.md per primo
-    const fileName = firstFile.path.replace('.md', '');
-    return `/docs/${category.path}/${fileName}`;
+  // 
+  // --- LA CORREZIONE È QUI ---
+  // Cambiato da 'category.files' a 'category.items'
+  //
+  if (category.items && category.items.length > 0) {
+    // Lo script 'generate-menu.js' ordina 'index.md' (tipo 'file') come primo elemento
+    const firstFile = category.items[0]; 
+    
+    // Controlliamo per sicurezza che il primo item sia un file
+    if (firstFile.type === 'file') {
+      const fileName = firstFile.path.replace('.md', '');
+      return `/docs/${category.path}/${fileName}`;
+    }
   }
   return '#'; // Fallback
 }
