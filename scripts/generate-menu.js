@@ -2,102 +2,105 @@ import fs from 'fs-extra';
 import path from 'path';
 import { glob } from 'glob';
 
-const docsPath = path.join(process.cwd(), 'public/docs');
-// Salviamo il file dentro /src, così possiamo importarlo
-// direttamente nel codice di Vue.
-const menuOutputPath = path.join(process.cwd(), 'src/menu.json');
+// Percorso alla cartella 'public/docs'
+const docsDir = path.resolve(process.cwd(), 'public/docs');
+// Percorso del file JSON da generare in 'src/'
+const outputFilePath = path.resolve(process.cwd(), 'src/menu.json');
 
-const menu = [];
+// Funzione per formattare i nomi delle categorie (es. 'cri-trasporti' -> 'Cri Trasporti')
+const formatCategoryName = (dirName) => {
+  return dirName
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
 
-/**
- * Cerca di estrarre il titolo H1 da un file markdown.
- * @param {string} filePath - Percorso del file .md
- * @returns {string | null} - Il testo del titolo H1 se trovato, altrimenti null.
- */
-function getTitleFromMarkdown(filePath) {
-  try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    // Cerca la prima riga che inizia con '# ' (H1)
-    const match = content.match(/^#\s+(.+)/m);
-    if (match && match[1]) {
-      return match[1]; // Ritorna il testo catturato dopo '# '
-    }
-  } catch (e) {
-    console.warn(`[generate-menu] Impossibile leggere il file ${filePath}: ${e.message}`);
+// Funzione per formattare i nomi dei file (es. 'install-guide' -> 'Install Guide')
+const formatFileName = (filePath) => {
+  const fileName = path.basename(filePath, '.md');
+  
+  if (fileName === 'index') {
+    return 'Introduzione';
   }
-  return null;
-}
+  
+  return fileName
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
 
-try {
-  // Controlla se la cartella public/docs esiste prima di leggerla
-  if (fs.existsSync(docsPath)) {
-    const categories = fs.readdirSync(docsPath).filter(file => 
-      fs.statSync(path.join(docsPath, file)).isDirectory()
-    );
+// Funzione per leggere il titolo H1 da un file markdown
+const getTitleFromFile = (filePath) => {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    // Cerca la prima riga che inizia con '# '
+    const match = content.match(/^#\s+(.*)/m);
+    if (match && match[1]) {
+      return match[1].trim(); // Ritorna il testo del titolo
+    }
+  } catch (err) {
+    console.error(`Errore leggendo ${filePath}:`, err);
+  }
+  return null; // Ritorna null se non trova H1 o c'è un errore
+};
 
-    categories.forEach(category => {
-      const categoryPath = path.join(docsPath, category);
-      let files = glob.sync(`${categoryPath}/**/*.md`);
-      
-      // Ordina i file per mettere 'index.md' per primo
-      files.sort((a, b) => {
-        const aName = path.basename(a).toLowerCase();
-        const bName = path.basename(b).toLowerCase();
-        
-        if (aName === 'index.md') return -1; // 'index.md' viene prima
-        if (bName === 'index.md') return 1;  // 'index.md' viene prima
-        return a.localeCompare(b); // Ordine alfabetico per gli altri
-      });
 
-      const pages = files.map(file => {
-        const relativePath = path.relative(docsPath, file);
-        const basename = path.basename(file, '.md');
-        
-        // --- MODIFICA ---
-        // 1. Prova a leggere il titolo H1 dal file
-        let name = getTitleFromMarkdown(file);
+const generateMenu = async () => {
+  try {
+    // 1. Trova tutte le sottocartelle in 'public/docs' (es. 'generale', 'cri-trasporti')
+    const categories = (await fs.readdir(docsDir, { withFileTypes: true }))
+      .filter(dirent => dirent.isDirectory())
+      .map(dirent => dirent.name);
 
-        // 2. Se non c'è H1, usa la logica di fallback basata sul nome del file
-        if (!name) {
-          if (basename.toLowerCase() === 'index') {
-            name = 'Introduzione'; // Default per index.md
-          } else {
-            // Capitalizza e sostituisci i trattini
-            name = basename.charAt(0).toUpperCase() + basename.slice(1);
-            name = name.replace(/-/g, ' '); // Es: "aggiungi-trasporto" -> "Aggiungi trasporto"
-          }
-        }
-        // --- FINE MODIFICA ---
+    const menu = [];
 
-        // Sostituisci i separatori di percorso di Windows (\\) con quelli web (/)
-        const link = relativePath.replace(/\\/g, '/');
+    // 2. Itera su ogni cartella di categoria
+    for (const categoryDir of categories) {
+      const categoryPath = path.join(docsDir, categoryDir);
+      // Trova tutti i file .md nella cartella
+      const files = await glob('*.md', { cwd: categoryPath });
+
+      const fileData = files.map(file => {
+        const filePath = path.join(categoryPath, file);
+        // Tenta di prendere il titolo H1, altrimenti formatta il nome file
+        const title = getTitleFromFile(filePath);
+        const name = title || formatFileName(file);
         
         return {
-          name: name, // Nome (da H1 o da nome file)
-          link: link, // Es: "cri-trasporti/install.md" o "cri-trasporti/index.md"
+          name: name,
+          path: file, // es. 'index.md' o 'install.md'
+          isIndex: file === 'index.md'
         };
       });
 
-      if (pages.length > 0) {
-        menu.push({
-          category: category.charAt(0).toUpperCase() + category.slice(1).replace(/-/g, ' '), // Es: "Cri trasporti"
-          path: category,
-          pages: pages,
-        });
-      }
-    });
-  } else {
-    console.warn(`[generate-menu] Cartella non trovata: ${docsPath}. Il menu sarà vuoto.`);
+      // Ordina i file: 'index.md' (Introduzione) sempre per primo
+      fileData.sort((a, b) => {
+        if (a.isIndex) return -1;
+        if (b.isIndex) return 1;
+        return a.name.localeCompare(b.name);
+      });
+
+      menu.push({
+        category: formatCategoryName(categoryDir), // es. 'Cri Trasporti'
+        path: categoryDir, // es. 'cri-trasporti'
+        files: fileData // Usa la chiave 'files'
+      });
+    }
+
+    // 3. Scrive il file JSON in 'src/menu.json'
+    await fs.outputJson(outputFilePath, menu, { spaces: 2 });
+    console.log(`Menu generato con successo in ${outputFilePath}`);
+
+  } catch (error) {
+    // Gestisce il caso in cui la cartella 'public/docs' non esista
+    if (error.code === 'ENOENT') {
+      console.warn("Cartella 'public/docs' non trovata. Genero un menu vuoto.");
+      await fs.outputJson(outputFilePath, [], { spaces: 2 });
+    } else {
+      console.error('Errore durante la generazione del menu:', error);
+      process.exit(1); // Esce con errore se fallisce
+    }
   }
+};
 
-  // Scrivi il file menu.json anche se è vuoto
-  // Questo evita che la build fallisca
-  fs.writeJsonSync(menuOutputPath, menu, { spaces: 2 });
-  console.log(`[generate-menu] File menu.json generato con ${menu.length} categorie.`);
-
-} catch (error) {
-  console.error('[generate-menu] Errore durante la generazione del menu:', error);
-  // Scrivi un menu vuoto in caso di errore per non bloccare la build
-  fs.writeJsonSync(menuOutputPath, [], { spaces: 2 });
-  process.exit(1); // Esci con un codice di errore per segnalare il fallimento
-}
+generateMenu();
