@@ -1,54 +1,63 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-white text-gray-900 font-sans">
-    
-    <!-- Header -->
-    <SiteHeader v-model:sidebarOpen="sidebarOpen" />
+  <div class="flex flex-col min-h-screen bg-white">
+    <!-- Passa lo stato 'sidebarOpen' e ascolta l'evento 'toggle-sidebar' -->
+    <SiteHeader :sidebar-open="sidebarOpen" @toggle-sidebar="sidebarOpen = !sidebarOpen" />
 
-    <!-- Contenuto Principale -->
-    <div class="flex flex-1 container mx-auto pt-16">
-      
-      <!-- Sidebar (Navigazione) -->
+    <div class="flex-1 flex overflow-hidden">
+      <!-- 
+        Sidebar (Menu di Navigazione)
+        - 'transform' e 'transition' per l'animazione slide-in/out
+        - z-index 30 per stare sopra il contenuto
+        - Chiusa di default su mobile (translate-x-full)
+        - Aperta su desktop (md:translate-x-0)
+      -->
       <aside 
-        class="fixed inset-y-0 left-0 z-30 w-64 bg-gray-50 border-r border-gray-200 transform transition-transform duration-300 ease-in-out pt-16 lg:translate-x-0 lg:sticky lg:top-16 lg:flex-shrink-0"
-        :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
-        style="height: calc(100vh - 4rem);"
+        :class="[
+          'fixed inset-y-0 right-0 z-30 w-64 bg-gray-50 border-l border-gray-200 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0',
+          sidebarOpen ? 'translate-x-0' : 'translate-x-full'
+        ]"
+        aria-label="Sidebar"
       >
-        <div class="p-4 overflow-y-auto h-full">
-          <nav>
-            <ul>
-              <li v-for="category in categories" :key="category.path" class="mb-4">
-                <!-- Categoria "cliccabile" per l'accordion -->
-                <button 
-                  @click="toggleCategory(category.path)" 
-                  class="flex justify-between items-center w-full text-left font-semibold text-lg text-gray-800 hover:text-red-700 mb-2"
+        <div class="h-full px-3 py-4 overflow-y-auto">
+          <nav class="space-y-2">
+            <!-- Loop sulle categorie (es. Generale, Cri-trasporti) -->
+            <div v-for="category in pages" :key="category.path">
+              <!-- Pulsante Categoria (Accordion) -->
+              <button 
+                @click="toggleAccordion(category.path)"
+                class="flex items-center justify-between w-full p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 group"
+              >
+                <span class="flex-1 text-left whitespace-nowrap">{{ category.category }}</span>
+                <!-- Icona freccia che ruota -->
+                <svg 
+                  class="w-4 h-4 transition-transform duration-200" 
+                  :class="{'rotate-90': accordionState[category.path]}"
+                  fill="currentColor" 
+                  viewBox="0 0 20 20" 
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  {{ category.name }}
-                  <svg 
-                    class="w-4 h-4 transition-transform" 
-                    :class="{ 'rotate-180': openCategories.includes(category.path) }" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              
+              <!-- Elenco Pagine (Accordion content) -->
+              <ul v-show="accordionState[category.path]" class="pl-4 space-y-1 pt-1">
+                <li v-for="page in category.pages" :key="page.link">
+                  <!-- 
+                    Usiamo router-link per la navigazione.
+                    Il router (in router.js) si aspetta percorsi senza .md
+                    Es. /cri-trasporti/install
+                  -->
+                  <router-link
+                    :to="'/' + page.link.replace('.md', '')"
+                    class="block p-2 text-sm text-gray-700 rounded-lg hover:bg-gray-100"
+                    active-class="bg-red-100 text-red-700 font-medium"
                   >
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-                
-                <!-- Elenco dei file (visibile solo se la categoria è aperta) -->
-                <ul v-show="openCategories.includes(category.path)" class="ml-4 space-y-2">
-                  <li v-for="file in category.files" :key="file.slug">
-                    <router-link
-                      :to="`/docs/${category.path}/${file.slug}`"
-                      class="block text-gray-600 hover:text-red-700 transition-colors"
-                      active-class="font-semibold text-red-700"
-                      @click="sidebarOpen = false"
-                    >
-                      {{ file.name }}
-                    </router-link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+                    {{ page.name }}
+                  </router-link>
+                </li>
+              </ul>
+            </div>
           </nav>
         </div>
       </aside>
@@ -56,77 +65,70 @@
       <!-- Overlay per chiudere la sidebar su mobile -->
       <div 
         v-if="sidebarOpen" 
-        class="fixed inset-0 bg-black opacity-50 z-20 lg:hidden"
         @click="sidebarOpen = false"
+        class="fixed inset-0 z-20 bg-black/30 md:hidden"
+        aria-hidden="true"
       ></div>
 
-      <!-- Area Contenuto (dove viene caricato DocPage.vue) -->
-      <main class="flex-1 p-6 lg:p-10 overflow-y-auto" style="max-height: calc(100vh - 4rem);">
-        <!-- RouterView riceve i props dal router e li passa a DocPage -->
-        <router-view v-slot="{ Component, route }">
-          <component 
-            :is="Component" 
-            :key="route.path" 
-            :category="route.params.category" 
-            :slug="route.params.slug" 
-          />
-        </router-view>
+      <!-- Area Contenuto Principale -->
+      <main class="flex-1 overflow-y-auto p-4 md:p-8">
+        <!-- router-view è dove Vue Router caricherà il componente DocPage -->
+        <router-view />
       </main>
-
     </div>
-    
-    <!-- Footer -->
+
     <SiteFooter />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import SiteHeader from '@/components/SiteHeader.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
+// 1. Importa il menu.json da /src invece di fare fetch
+import menuData from '@/menu.json';
 
+const sidebarOpen = ref(false);
+// 2. Assegna i dati importati direttamente alla ref
+const pages = ref(menuData);
+const accordionState = ref({});
 const route = useRoute();
-const sidebarOpen = ref(false); // Sidebar chiusa di default su mobile
-const categories = ref([]); // Menu
-const openCategories = ref([]); // Lista delle categorie "aperte" nell'accordion
 
-// Funzione per l'accordion
-function toggleCategory(categoryPath) {
-  const index = openCategories.value.indexOf(categoryPath);
-  if (index > -1) {
-    openCategories.value.splice(index, 1); // Chiude
-  } else {
-    openCategories.value.push(categoryPath); // Apre
-  }
-}
-
-// Carica il menu.json generato dallo script
-async function fetchMenu() {
-  try {
-    const response = await fetch(`${import.meta.env.BASE_URL}docs/menu.json`);
-    if (!response.ok) throw new Error('menu.json non trovato');
-    const menuData = await response.json();
-    
-    // Converte l'oggetto in un array per v-for
-    categories.value = Object.keys(menuData).map(key => ({
-      path: key,
-      name: menuData[key].name,
-      files: menuData[key].files,
-    }));
-    
-    // Controlla la rotta attuale e apre la categoria corrispondente
-    const currentCategory = route.params.category;
-    if (currentCategory && !openCategories.value.includes(currentCategory)) {
-      openCategories.value.push(currentCategory);
+// Funzione per espandere/comprimere l'accordion
+const toggleAccordion = (categoryPath) => {
+  // Comportamento accordion: chiudi gli altri quando ne apri uno
+  Object.keys(accordionState.value).forEach(key => {
+    if (key !== categoryPath) {
+      accordionState.value[key] = false;
     }
-    
-  } catch (error) {
-    console.error("Errore nel caricamento del menu:", error);
-  }
-}
+  });
+  // Inverti lo stato di quello cliccato
+  accordionState.value[categoryPath] = !accordionState.value[categoryPath];
+};
 
-onMounted(() => {
-  fetchMenu();
-});
+// Funzione per impostare lo stato dell'accordion in base alla rotta attuale
+const setAccordionFromRoute = (currentRoute) => {
+  // Estrai la categoria dall'URL (es. /cri-trasporti/install -> cri-trasporti)
+  const currentCategoryPath = currentRoute.path.split('/')[1];
+  if (currentCategoryPath) {
+    // Chiudi tutti...
+    Object.keys(accordionState.value).forEach(key => {
+      accordionState.value[key] = false;
+    });
+    // ...e apri solo quello corretto
+    accordionState.value[currentCategoryPath] = true;
+  }
+};
+
+// 3. Rimuoviamo onMounted.
+// Usiamo un 'watch' sulla rotta per due scopi:
+// 1. Chiudere la sidebar quando l'utente naviga (su mobile)
+// 2. Aprire la categoria corretta nell'accordion
+// 'immediate: true' fa sì che questo watch venga eseguito subito al caricamento
+// della pagina, gestendo i link diretti.
+watch(route, (newRoute) => {
+  sidebarOpen.value = false; // Chiudi sidebar su navigazione
+  setAccordionFromRoute(newRoute); // Apri accordion corretto
+}, { immediate: true });
 </script>
