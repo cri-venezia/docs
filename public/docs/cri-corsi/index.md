@@ -1,6 +1,4 @@
-# Introduzione a CRI Corsi
-
-## Cos'è "CRI Corsi"?
+# Cos'è "CRI Corsi"?
 
 CRI Corsi è un plugin personalizzato per WordPress, progettato e sviluppato per il Comitato di Venezia della Croce Rossa Italiana. Il suo scopo è gestire l'intero ciclo di vita dei corsi offerti dal Comitato, dalla creazione alla prenotazione e al pagamento.
 
