@@ -1,4 +1,4 @@
-# Guida Admin: Creare e Configurare un Corso
+# Creare e Configurare un Corso
 
 Questa guida spiega come creare un nuovo corso e configurare tutti i dettagli necessari per la sua pubblicazione e prenotazione.
 
