@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node scripts/generate-menu.js && vite",
     "build": "node scripts/generate-menu.js && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --port 3000"
   },
   "dependencies": {
     "glightbox": "^3.3.0",
