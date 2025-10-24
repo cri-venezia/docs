@@ -14,7 +14,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <div v-for="category in categories" :key="category.path" 
-             class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+             class="bg-cri-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
           
           <h3 class="text-xl font-bold text-red-700 mb-3">{{ category.category }}</h3>
           <p class="text-gray-600 mb-4 h-20 overflow-hidden">
@@ -23,7 +23,7 @@
           
           <!-- Linka al primo file della categoria (es. index.md) -->
           <router-link :to="getFirstFileUrl(category)"
-                       class="inline-block font-medium text-red-600 hover:text-red-800 transition-colors">
+                       class="inline-block font-medium text-cri-red hover:text-cri-red transition-colors">
             Inizia a leggere &rarr;
           </router-link>
         </div>

@@ -1,13 +1,21 @@
+const typography = require('@tailwindcss/typography');
+
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      // Aggiungiamo i colori ufficiali
+      colors: {
+        'cri-red': '#CC0000',
+        'cri-white': '#FFFFFF',
+      }
+    },
   },
   plugins: [
-    require('@tailwindcss/typography'), // Aggiungiamo il plugin per 'prose'
+    typography,
   ],
 }
