@@ -1,14 +1,15 @@
 import DocPage from './components/DocPage.vue';
-import Home from './views/Home.vue'; // <-- Importa il nuovo componente Home
+import Home from './views/Home.vue';
 
 const routes = [
   {
-    path: '/', // <-- Nuova rotta per la Home
+    path: '/',
     name: 'Home',
     component: Home,
   },
   {
-    path: '/docs/:category/:file',
+    // MODIFICA: Aggiunto (.+) per matchare percorsi nidificati
+    path: '/docs/:category/:file(.+)', 
     name: 'DocPage',
     component: DocPage,
   },

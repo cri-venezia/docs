@@ -11,7 +11,7 @@
           v-if="!isHomePage"
           :class="[
             'fixed md:sticky top-16 md:top-auto md:h-[calc(100vh-4rem)] z-30',
-            'w-64 bg-white border-r border-gray-200 transition-transform transform',
+            'w-64 bg-cri-white border-r border-gray-200 transition-transform transform',
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
           ]">
           
@@ -19,20 +19,23 @@
             <ul class="space-y-4">
               <li v-for="category in pages" :key="category.path">
                 <h2 @click="toggleCategory(category.path)" 
-                    class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2 cursor-pointer hover:text-gray-900">
+                    class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2 cursor-pointer hover:text-cri-red">
                   {{ category.category }}
                 </h2>
-                <ul v-show="openCategories[category.path]" class="space-y-1 ml-2 border-l border-gray-200">
-                  <li v-for="file in category.files" :key="file.path">
-                    <router-link
-                      :to="`/docs/${category.path}/${file.path.replace('.md', '')}`"
-                      @click="isSidebarOpen = false"
-                      class="block py-1.5 px-3 rounded text-gray-700 hover:bg-gray-100 transition-colors"
-                      active-class="bg-red-50 text-red-700 font-medium">
-                      {{ file.name }}
-                    </router-link>
-                  </li>
-                </ul>
+                
+                <!-- 
+                  MODIFICA: Rimossa la vecchia lista <ul>
+                  e sostituita con il nuovo componente ricorsivo
+                -->
+                <div v-show="openCategories[category.path]">
+                  <SidebarMenu
+                    :items="category.items"
+                    :category-path="category.path"
+                    :open-groups="openSubGroups"
+                    @navigate="isSidebarOpen = false"
+                    @toggle-group="toggleSubGroup"
+                  />
+                </div>
               </li>
             </ul>
           </div>
@@ -61,29 +64,49 @@ import { ref, watch, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import SiteHeader from '@/components/SiteHeader.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
+import SidebarMenu from '@/components/SidebarMenu.vue'; // <-- Importa il nuovo componente
 import menuData from '@/menu.json';
 
 const route = useRoute();
 const pages = ref(menuData);
-const openCategories = ref({});
 const isSidebarOpen = ref(false);
+
+// Stato per le categorie principali (es. "Cri Corsi")
+const openCategories = ref({});
+// Stato per i sottomenu (es. "Admin")
+const openSubGroups = ref({});
 
 // Controlla se siamo sulla homepage
 const isHomePage = computed(() => route.path === '/');
 
-// Logica per espandere/comprimere categorie
+// Logica per espandere/comprimere categorie principali
 const toggleCategory = (categoryPath) => {
   openCategories.value[categoryPath] = !openCategories.value[categoryPath];
+};
+
+// Logica per espandere/comprimere sottomenu
+const toggleSubGroup = (groupPath) => {
+  openSubGroups.value[groupPath] = !openSubGroups.value[groupPath];
 };
 
 // Logica per aprire la categoria corretta in base all'URL
 const setAccordionFromRoute = () => {
   const categoryPath = route.params.category;
+  const filePath = route.params.file || '';
+
   if (categoryPath) {
-    // Chiudi tutte le altre e apri quella corrente
-    const newOpenCategories = {};
-    newOpenCategories[categoryPath] = true;
-    openCategories.value = newOpenCategories;
+    // Apri la categoria principale
+    openCategories.value = { [categoryPath]: true };
+
+    // Apri i sottomenu necessari per il file corrente
+    const segments = filePath.split('/');
+    if (segments.length > 1) {
+      let currentPath = '';
+      for (let i = 0; i < segments.length - 1; i++) {
+        currentPath = currentPath ? `${currentPath}/${segments[i]}` : segments[i];
+        openSubGroups.value[currentPath] = true;
+      }
+    }
   }
 };
 
