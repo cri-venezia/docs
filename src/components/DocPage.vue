@@ -1,90 +1,74 @@
+<template>
+  <!-- La classe 'prose' di Tailwind formatta l'HTML generato -->
+  <div class="prose max-w-none p-4 md:p-8" v-html="content"></div>
+</template>
+
 <script setup>
-import { ref, watchEffect, nextTick } from 'vue'
-import { marked } from 'marked'
-import GLightbox from 'glightbox'
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+// CORREZIONE: Importa { marked } invece di 'marked' (named export)
+import { marked } from 'marked'; 
+import GLightbox from 'glightbox';
+import 'glightbox/dist/css/glightbox.min.css';
 
-// Questo componente riceve 'category' e 'page' come props dal router
-const props = defineProps({
-  category: {
-    type: String,
-    required: true
-  },
-  page: {
-    type: String,
-    required: true
-  }
-})
+const route = useRoute();
+const content = ref('');
+let lightboxInstance = null;
 
-const renderedMarkdown = ref('<p class="text-xl text-gray-500">Caricamento...</p>')
-let lightboxInstance = null
-
-// Creiamo un renderer personalizzato per Marked per la lightbox
-const markedRenderer = new marked.Renderer();
-const originalImageRenderer = markedRenderer.image.bind(markedRenderer);
-
-markedRenderer.image = (href, title, text) => {
-  const imgHtml = originalImageRenderer(href, title, text);
-  return `<a href="${href}" class="glightbox" data-gallery="page-gallery">${imgHtml}</a>`;
+// Configurazione GLightbox e renderer per marked
+const renderer = new marked.Renderer();
+renderer.image = (href, title, text) => {
+  // Avvolge l'immagine in un link per GLightbox
+  return `
+    <a href="${href}" class="glightbox" data-gallery="doc-images">
+      <img src="${href}" alt="${text}" title="${title || ''}" class="rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer">
+    </a>
+  `;
 };
 
-marked.use({ renderer: markedRenderer });
+// Applica il renderer personalizzato
+marked.use({ renderer });
 
-// Funzione per caricare e renderizzare il markdown
-const loadContent = async (category, page) => {
-  // Costruiamo il percorso del file .md
-  // Nota: usiamo `/docs/...` che punta alla cartella 'public/docs'
-  // I file in 'public' vengono copiati nella root del sito durante il build
-  const fullPath = category ? `${category}/${page}.md` : `${page}.md`;
-  const fileUrl = `/docs/${fullPath}`; // Modificato per Vite
+const loadMarkdown = async () => {
+  // Pulisci il contenuto se i parametri non sono validi
+  if (!route.params.category || !route.params.file) {
+    content.value = '';
+    return;
+  }
 
-  renderedMarkdown.value = '<p class="text-xl text-gray-500">Caricamento...</p>';
-  
   try {
-    const response = await fetch(fileUrl);
+    const docPath = `/docs/${route.params.category}/${route.params.file}.md`;
+    const response = await fetch(docPath);
     
     if (!response.ok) {
-      throw new Error(`Impossibile trovare il file ${fullPath}`);
+      throw new Error(`File non trovato: ${response.statusText}`);
     }
     
-    const markdownText = await response.text();
-    renderedMarkdown.value = marked.parse(markdownText);
+    const markdown = await response.text();
+    // Usa 'await marked.parse()' per la versione asincrona (consigliato da v12)
+    content.value = await marked.parse(markdown);
 
-    // Gestione Lightbox
+    // Re-inizializza GLightbox dopo che il DOM è stato aggiornato
+    // Diamo un piccolo ritardo per assicurare che il v-html sia renderizzato
+    await new Promise(resolve => setTimeout(resolve, 0)); 
+    
     if (lightboxInstance) {
       lightboxInstance.destroy();
     }
-
-    // Aspettiamo che Vue aggiorni il DOM
-    await nextTick();
-    
-    // Re-inizializziamo GLightbox
     lightboxInstance = GLightbox({
-      selector: '.glightbox',
-      touchNavigation: true,
-      loop: true,
-      gallery: 'page-gallery'
+      selector: '.glightbox'
     });
 
   } catch (error) {
-    console.error('Errore nel caricamento della pagina:', error);
-    renderedMarkdown.value = `<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg">
-                                <h3 class="font-bold">Errore</h3>
-                                <p>Impossibile caricare il file: <strong>${fullPath}</strong>.</p>
-                                <p class="text-sm mt-2">Assicurati che il file esista nella cartella 'public/docs' e che il nome sia corretto.</p>
-                              </div>`;
+    console.error('Errore nel caricamento del markdown:', error);
+    content.value = `<p class="text-red-500">Impossibile caricare il documento: ${route.params.file}.md</p>`;
   }
-}
+};
 
-// watchEffect reagisce ai cambiamenti delle props (category, page)
-// e ricarica il contenuto
-watchEffect(() => {
-  if (props.page) {
-    loadContent(props.category, props.page)
-  }
-})
+// Carica il markdown quando la rotta cambia (e al caricamento iniziale)
+watch(
+  () => route.path,
+  loadMarkdown,
+  { immediate: true }
+);
 </script>
-
-<template>
-  <!-- Il div 'prose' è dove iniettiamo l'HTML convertito -->
-  <div class="prose max-w-none" v-html="renderedMarkdown"></div>
-</template>
