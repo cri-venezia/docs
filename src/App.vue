@@ -11,7 +11,10 @@
           v-if="!isHomePage"
           :class="[
             'fixed md:sticky top-16 md:top-auto md:h-[calc(100vh-4rem)] z-30',
-            'w-64 bg-cri-white border-r border-gray-200 transition-transform transform',
+            
+            // MODIFICA: Aumentata la larghezza
+            'w-80 bg-cri-white border-r border-gray-200 transition-transform transform', 
+            
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
           ]">
           
@@ -23,10 +26,6 @@
                   {{ category.category }}
                 </h2>
                 
-                <!-- 
-                  MODIFICA: Rimossa la vecchia lista <ul>
-                  e sostituita con il nuovo componente ricorsivo
-                -->
                 <div v-show="openCategories[category.path]">
                   <SidebarMenu
                     :items="category.items"
@@ -42,7 +41,12 @@
         </nav>
 
         <!-- Contenuto Principale -->
-        <main :class="['transition-all duration-300 w-full', !isHomePage ? 'md:ml-64' : '']">
+        <main :class="[
+          'transition-all duration-300 w-full', 
+          
+          // MODIFICA: Aumentato il margine per corrispondere alla sidebar
+          !isHomePage ? 'md:ml-80' : ''
+        ]">
           <router-view />
         </main>
 
@@ -64,7 +68,7 @@ import { ref, watch, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import SiteHeader from '@/components/SiteHeader.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
-import SidebarMenu from '@/components/SidebarMenu.vue'; // <-- Importa il nuovo componente
+import SidebarMenu from '@/components/SidebarMenu.vue'; 
 import menuData from '@/menu.json';
 
 const route = useRoute();
