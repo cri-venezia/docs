@@ -10,30 +10,23 @@ import { marked } from 'marked';
 import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
 
-// !!! INSERISCI QUI L'URL BASE DEL TUO CDN (assicurati che termini con uno slash '/') !!!
-const CDN_URL = 'https://crive-images.b-cdn.net/'; 
+// --- MODIFICA ---
+// Rimossa la costante CDN_URL e la variabile absoluteUrlRegex
+// ----------------
 
 const route = useRoute();
 const content = ref('');
 let lightboxInstance = null;
 
-// --- MODIFICA: Creato l'oggetto RegExp per evitare errori del parser ---
-// Questa regex controlla se un URL è assoluto (http, https, data:, //)
-const absoluteUrlRegex = new RegExp('^(https|http|data:|/{2})', 'i');
-// -------------------------------------------------------------------
-
 // Configurazione GLightbox e renderer per marked
 const renderer = new marked.Renderer();
 
+// --- MODIFICA ---
+// La logica del CDN è stata rimossa.
+// 'href' ora viene usato così com'è.
 renderer.image = (href, title, text) => {
-  let finalHref = href;
-
-  // --- MODIFICA: Usa la variabile regex invece della sintassi /.../ ---
-  if (!absoluteUrlRegex.test(href)) {
-    // È un percorso relativo, anteponi il CDN_URL
-    finalHref = CDN_URL + href.replace(/^\.?\//, '');
-  }
-  // ---------------------------------------------------------------
+  // Si assume che 'href' sia un percorso root-relativo (es. /docs/images/foto.png)
+  const finalHref = href; 
 
   // Avvolge l'immagine in un link per GLightbox
   return `
@@ -42,6 +35,7 @@ renderer.image = (href, title, text) => {
     </a>
   `;
 };
+// ------------------------------------------
 
 // Applica il renderer personalizzato
 marked.use({ renderer });
