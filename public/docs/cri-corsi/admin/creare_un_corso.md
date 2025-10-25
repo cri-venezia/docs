@@ -56,6 +56,8 @@ Inserisci il costo del corso (es. 50.00).
 
 **ID Prodotto WooCommerce**:
 
+![Aggiungi Prodotto](img/aggiungi_prodotto.png)
+
 Questo è il campo fondamentale per i corsi a pagamento.
 
 Prima di compilare questo campo, devi aver creato un prodotto corrispondente in WooCommerce > Prodotti.
