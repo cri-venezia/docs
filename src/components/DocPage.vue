@@ -11,7 +11,7 @@ import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
 
 // !!! INSERISCI QUI L'URL BASE DEL TUO CDN (assicurati che termini con uno slash '/') !!!
-const CDN_URL = 'https://TUA_PULLZONE_URL/'; 
+const CDN_URL = 'https://crive-images.b-cdn.net/'; 
 
 const route = useRoute();
 const content = ref('');
