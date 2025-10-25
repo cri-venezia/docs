@@ -1,137 +1,147 @@
-import fs from 'fs-extra';
+import fs from 'fs'; // <-- MODIFICA: Importa il modulo 'fs' nativo di Node.js
+import fse from 'fs-extra'; // <-- MODIFICA: Importa 'fs-extra' come 'fse'
 import path from 'path';
+import matter from 'gray-matter';
 
-// Percorsi
+// Percorsi (invariati)
 const docsDir = path.resolve(process.cwd(), 'public/docs');
 const outputFilePath = path.resolve(process.cwd(), 'src/menu.json');
 
-// --- Funzioni Helper (formattazione e lettura titoli) ---
+// --- Funzioni Helper (formattazione) ---
 
 const formatName = (name) => {
-  return name
-    .replace(/\.md$/, '') // Rimuove .md
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+    return name
+        .replace(/\.md$/, '')
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
 };
 
-const getTitleFromFile = (filePath) => {
-  try {
-    const content = fs.readFileSync(filePath, 'utf-8');
-    const match = content.match(/^#\s+(.*)/m); // Cerca H1
-    if (match && match[1]) {
-      return match[1].trim();
+// --- Funzione ParseFile (usa 'fs' nativo) ---
+const parseFile = (filePath) => {
+    try {
+        // 'fs.readFileSync' ora è risolto perché usiamo il modulo 'fs' nativo
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        const { data: frontmatter, content } = matter(fileContent);
+
+        const h1Match = content.match(/^#\s+(.*)/m);
+        const h1Title = h1Match ? h1Match[1].trim() : null;
+
+        const fallbackName = formatName(path.basename(filePath) === 'index.md' ? 'Introduzione' : path.basename(filePath));
+        const name = frontmatter.title || h1Title || fallbackName;
+
+        const description = frontmatter.description || null;
+
+        return { name, description };
+
+    } catch (err) {
+        console.warn(`Errore leggendo ${filePath}:`, err.message);
     }
-  } catch (err) { /* ignora errore */ }
-  return null;
+    return { name: formatName(path.basename(filePath)), description: null };
 };
 
-// --- NUOVA FUNZIONE RICORSIVA ---
 
-/**
- * Scansiona una cartella e ritorna un array di "items"
- * @param {string} dirPath - Percorso della cartella da scansionare (es. .../public/docs/cri-corsi)
- * @param {string} relativePath - Percorso relativo alla categoria (es. '' o 'admin')
- */
+// --- Funzione Ricorsiva (processDirectory) (usa 'fs' nativo) ---
 const processDirectory = (dirPath, relativePath = '') => {
-  const items = [];
-  
-  try {
-    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+    const items = [];
 
-    // Processa i file .md
-    for (const entry of entries) {
-      if (entry.isFile() && entry.name.endsWith('.md')) {
-        const filePath = path.join(dirPath, entry.name);
-        const fileRelativePath = path.join(relativePath, entry.name);
+    try {
+        // 'fs.readdirSync' ora è risolto
+        const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 
-        const title = getTitleFromFile(filePath);
-        const name = title || formatName(entry.name === 'index.md' ? 'Introduzione' : entry.name);
-        
-        items.push({
-          type: 'file',
-          name: name,
-          path: fileRelativePath.replace(/\\/g, '/'), // 'index.md' o 'admin/guida.md'
-          isIndex: entry.name === 'index.md'
-        });
-      }
-    }
+        // Processa i file .md
+        for (const entry of entries) {
+            if (entry.isFile() && entry.name.endsWith('.md')) {
+                const filePath = path.join(dirPath, entry.name);
+                const fileRelativePath = path.join(relativePath, entry.name);
 
-    // Processa le sottocartelle
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        const subDirPath = path.join(dirPath, entry.name);
-        const subRelativePath = path.join(relativePath, entry.name);
-        
-        // Chiamata ricorsiva
-        const subItems = processDirectory(subDirPath, subRelativePath);
-        
-        if (subItems.length > 0) {
-          items.push({
-            type: 'group',
-            name: formatName(entry.name), // es. 'Admin'
-            path: subRelativePath.replace(/\\/g, '/'),
-            items: subItems // Array nidificato
-          });
+                const { name, description } = parseFile(filePath);
+
+                items.push({
+                    type: 'file',
+                    name: name,
+                    description: description,
+                    path: fileRelativePath.replace(/\\/g, '/'),
+                    isIndex: entry.name === 'index.md'
+                });
+            }
         }
-      }
+
+        // Processa le sottocartelle
+        for (const entry of entries) {
+            if (entry.isDirectory()) {
+                const subDirPath = path.join(dirPath, entry.name);
+                const subRelativePath = path.join(relativePath, entry.name);
+
+                const subItems = processDirectory(subDirPath, subRelativePath);
+
+                if (subItems.length > 0) {
+                    items.push({
+                        type: 'group',
+                        name: formatName(entry.name),
+                        path: subRelativePath.replace(/\\/g, '/'),
+                        items: subItems
+                    });
+                }
+            }
+        }
+
+        // Ordina (invariato)
+        items.sort((a, b) => {
+            if (a.isIndex) return -1;
+            if (b.isIndex) return 1;
+            if (a.type === 'file' && b.type === 'group') return -1;
+            if (a.type === 'group' && b.type === 'file') return 1;
+            return a.name.localeCompare(b.name);
+        });
+
+        return items;
+
+    } catch (error) {
+        console.warn(`Attenzione: impossibile scansionare ${dirPath}`, error.message);
+        return [];
     }
-
-    // Ordina: index.md per primo, poi file, poi gruppi
-    items.sort((a, b) => {
-      if (a.isIndex) return -1;
-      if (b.isIndex) return 1;
-      if (a.type === 'file' && b.type === 'group') return -1;
-      if (a.type === 'group' && b.type === 'file') return 1;
-      return a.name.localeCompare(b.name);
-    });
-
-    return items;
-
-  } catch (error) {
-    console.warn(`Attenzione: impossibile scansionare ${dirPath}`, error.message);
-    return [];
-  }
 };
 
 
-// --- Funzione Principale ---
-
+// --- Funzione Principale (usa 'fse' per le chiamate async) ---
 const generateMenu = async () => {
-  try {
-    const categories = (await fs.readdir(docsDir, { withFileTypes: true }))
-      .filter(dirent => dirent.isDirectory())
-      .map(dirent => dirent.name);
+    try {
+        // MODIFICA: usa 'fse.readdir' (la versione async/promise di fs-extra)
+        const categories = (await fse.readdir(docsDir, { withFileTypes: true }))
+            .filter(dirent => dirent.isDirectory())
+            .map(dirent => dirent.name);
 
-    const menu = [];
+        const menu = [];
 
-    for (const categoryDir of categories) {
-      const categoryPath = path.join(docsDir, categoryDir);
-      
-      // Avvia la scansione ricorsiva per questa categoria
-      const items = processDirectory(categoryPath); 
+        for (const categoryDir of categories) {
+            const categoryPath = path.join(docsDir, categoryDir);
 
-      if (items.length > 0) {
-        menu.push({
-          category: formatName(categoryDir),
-          path: categoryDir,
-          items: items // L'array 'files' ora si chiama 'items' ed è nidificato
-        });
-      }
+            const items = processDirectory(categoryPath);
+
+            if (items.length > 0) {
+                menu.push({
+                    category: formatName(categoryDir),
+                    path: categoryDir,
+                    items: items
+                });
+            }
+        }
+
+        // MODIFICA: usa 'fse.outputJson'
+        await fse.outputJson(outputFilePath, menu, { spaces: 2 });
+        console.log(`Menu ricorsivo (con frontmatter) generato con successo in ${outputFilePath}`);
+
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            console.warn("Cartella 'public/docs' non trovata. Genero un menu vuoto.");
+            // MODIFICA: usa 'fse.outputJson'
+            await fse.outputJson(outputFilePath, [], { spaces: 2 });
+        } else {
+            console.error('Errore durante la generazione del menu:', error);
+            process.exit(1);
+        }
     }
-
-    await fs.outputJson(outputFilePath, menu, { spaces: 2 });
-    console.log(`Menu ricorsivo generato con successo in ${outputFilePath}`);
-
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      console.warn("Cartella 'public/docs' non trovata. Genero un menu vuoto.");
-      await fs.outputJson(outputFilePath, [], { spaces: 2 });
-    } else {
-      console.error('Errore durante la generazione del menu:', error);
-      process.exit(1);
-    }
-  }
 };
 
 generateMenu();
