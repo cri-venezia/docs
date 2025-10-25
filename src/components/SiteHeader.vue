@@ -66,13 +66,21 @@ const showMobileMenu = ref(false);
 // Controlla se siamo sulla homepage
 const isHomePage = computed(() => route.path === '/');
 
-// Funzione helper per il link "Inizia a leggere"
+// --- LA CORREZIONE È QUI ---
 function getFirstFileUrl(category) {
-  if (category.files && category.files.length > 0) {
-    const firstFile = category.files[0];
-    const fileName = firstFile.path.replace('.md', '');
-    return `/docs/${category.path}/${fileName}`;
+  // Cambiato da 'category.files' a 'category.items'
+  if (category.items && category.items.length > 0) {
+    
+    // Lo script 'generate-menu.js' ordina 'index.md' (tipo 'file') come primo elemento
+    const firstFile = category.items[0]; 
+    
+    // Controlliamo per sicurezza che il primo item sia un file
+    if (firstFile.type === 'file') {
+      const fileName = firstFile.path.replace('.md', '');
+      return `/docs/${category.path}/${fileName}`;
+    }
   }
-  return '#';
+  return '#'; // Fallback
 }
+// -------------------------
 </script>
