@@ -5,9 +5,12 @@ Questa guida spiega come creare un nuovo corso e configurare tutti i dettagli ne
 ## 1. Creare un Nuovo Corso
 
 Per iniziare, accedi alla bacheca di WordPress e naviga su:
+
 CRI Corsi > Aggiungi Nuovo
+![Menu Corso](img/menu_admin_corsi.png)
 
 Si aprirà l'editor standard di WordPress (Classic Editor).
+![Nuovo Corso](img/nuovo_corso.png)
 
 ## 2. Campi Standard di WordPress
 
@@ -22,6 +25,8 @@ Immagine in Evidenza: (Sul lato destro) L'immagine principale del corso che appa
 ## 3. Il Riquadro "Dettagli Corso"
 
 Sotto l'editor di testo principale, troverai il riquadro "Dettagli Corso". Qui si trova il cuore della configurazione del plugin.
+
+![Dettagli Corso](img/dettagli_corso.png)
 
 - Date e Orari Corso
 
