@@ -1,0 +1,5 @@
+nav:
+    - Panoramica: index.md
+    - Pagina 1: 1_info_trasporto.md
+    - Pagina 2: 2_luogo_prelievo.md
+    - Pagina 3: 3_dati_paziente.md

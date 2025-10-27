@@ -20,19 +20,19 @@ Questa sezione ti guiderà passo-passo attraverso ogni pagina del form. Clicca s
 <div class="grid cards" markdown>
 <ul>
 <li>
-<a href="compilazione/1_info_trasporto.md"> <!-- Link corretto -->
+<a href="info_trasporto.md"> <!-- Link corretto -->
     <h2>Pagina 1: Info Trasporto</h2>
 </a>
 <p>Inserimento dati del richiedente, data, motivazione (Visita, Trasferimento, ecc.) e campi specifici.</p>
 </li>
 <li>
-<a href="compilazione/2_luogo_prelievo.md"> <!-- Link corretto -->
+<a href="luogo_prelievo.md"> <!-- Link corretto -->
     <h2>Pagina 2: Luogo Prelievo</h2>
 </a>
 <p>Indicazione del luogo di prelievo (Domicilio, RSA, Ospedale) e dettagli sull'accessibilità.</p>
 </li>
 <li>
-<a href="compilazione/3_dati_paziente.md"> <!-- Link corretto -->
+<a href="dati_paziente.md"> <!-- Link corretto -->
     <h2>Pagina 3: Dati Paziente</h2>
 </a>
 <p>Inserimento dati anagrafici (nascita, CF) e recapiti di contatto del paziente.</p>
@@ -53,4 +53,4 @@ Questa sezione ti guiderà passo-passo attraverso ogni pagina del form. Clicca s
 
 Pronto/a per iniziare? Procedi alla guida della prima pagina.
 
-➡️ **[Inizia con Pagina 1: Informazioni sul Trasporto](compilazione/1_info_trasporto.md)**
+➡️ **[Inizia con Pagina 1: Informazioni sul Trasporto](compilazione-form/1_info_trasporto.md)** <!-- Link corretto -->

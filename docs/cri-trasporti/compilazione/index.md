@@ -2,7 +2,7 @@
 title: Guida alla Compilazione del Form Trasporti
 description: Introduzione alla guida passo-passo per richiedere un trasporto sanitario tramite il form online.
 hide:
-  - toc
+  - toc # Sintassi YAML corretta per nascondere il sommario
 ---
 
 # Guida alla Compilazione del Form Trasporti
@@ -15,30 +15,20 @@ Questo form è stato progettato per raccogliere in modo strutturato tutte le inf
 
 ## Struttura della Guida
 
-Questa sezione ti guiderà passo-passo attraverso ogni pagina del form. Clicca sulla scheda corrispondente per accedere alla guida specifica:
+Questa sezione ti guiderà passo-passo attraverso ogni pagina del form:
 
-<div class="grid cards" markdown>
-<ul>
-<li>
-<a href="compilazione/1_info_trasporto.md"> <!-- Link corretto -->
-    <h2>Pagina 1: Info Trasporto</h2>
-</a>
-<p>Inserimento dati del richiedente, data, motivazione (Visita, Trasferimento, ecc.) e campi specifici.</p>
-</li>
-<li>
-<a href="compilazione/2_luogo_prelievo.md"> <!-- Link corretto -->
-    <h2>Pagina 2: Luogo Prelievo</h2>
-</a>
-<p>Indicazione del luogo di prelievo (Domicilio, RSA, Ospedale) e dettagli sull'accessibilità.</p>
-</li>
-<li>
-<a href="compilazione/3_dati_paziente.md"> <!-- Link corretto -->
-    <h2>Pagina 3: Dati Paziente</h2>
-</a>
-<p>Inserimento dati anagrafici (nascita, CF) e recapiti di contatto del paziente.</p>
-</li>
-</ul>
-</div>
+1.  **[Pagina 1: Informazioni sul Trasporto](1_info_trasporto.md)**
+    * Inserimento dati del richiedente.
+    * Selezione della data del trasporto.
+    * Scelta della motivazione (Visita, Trasferimento, Ricovero, Dimissioni, Altro) e compilazione dei campi specifici.
+
+2.  **[Pagina 2: Luogo di Prelievo](2_luogo_prelievo.md)**
+    * Indicazione del luogo dove il paziente deve essere prelevato (Domicilio, RSA, Ospedale, Ambulatorio).
+    * Compilazione dei dettagli relativi all'indirizzo e all'accessibilità (piano, ascensore, scale).
+
+3.  **[Pagina 3: Dati Anagrafici Paziente](3_dati_paziente.md)**
+    * Inserimento dei dati del paziente (data/luogo nascita, CF).
+    * Fornitura dei recapiti di contatto (telefono, email).
 
 ---
 
@@ -48,9 +38,11 @@ Questa sezione ti guiderà passo-passo attraverso ogni pagina del form. Clicca s
 !!! note "Funzionalità Future"
     Nelle prossime versioni del plugin, stiamo valutando l'introduzione di un sistema che permetta al richiedente, se lo desidera, di ricevere aggiornamenti automatici sullo stato di avanzamento della richiesta (es. Approvata, Assegnata, Completata).
 
+---
+
 !!! info "Navigazione"
-    Puoi usare le schede qui sopra o la navigazione laterale per spostarti tra le pagine della guida. Alla fine di ogni pagina troverai un link per procedere alla successiva.
+    Puoi usare i link qui sopra o la navigazione laterale per spostarti tra le pagine della guida. Alla fine di ogni pagina troverai un link per procedere alla successiva.
 
 Pronto/a per iniziare? Procedi alla guida della prima pagina.
 
-➡️ **[Inizia con Pagina 1: Informazioni sul Trasporto](compilazione/1_info_trasporto.md)**
+➡️ **[Inizia con Pagina 1: Informazioni sul Trasporto](pagina_1_info_trasporto.md)**
