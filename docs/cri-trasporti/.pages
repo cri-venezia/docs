@@ -1,0 +1,9 @@
+# docs/cri-plugins/cri-trasporti/.pages
+# Definisce le voci principali della sidebar per CRI-Trasporti
+
+nav:
+    - Panoramica: index.md
+    # Punta alla sottocartella della guida compilazione
+    - Guida Compilazione Form: compilazione_form/
+    # Punta alla sottocartella della segreteria
+    - Guida Segreteria: segreteria/
