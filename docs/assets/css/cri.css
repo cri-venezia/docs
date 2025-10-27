@@ -68,40 +68,7 @@
     color: var(--cri-red);
 }
 
-/* 5. Stili Homepage Cards (Layout Aggiornato) */
-/* Stile base della card */
-.md-typeset .md-grid > * .md-typeset__card {
-    /* Bordo più spesso e scuro */
-    border: 2px solid var(--footer-dark); /* Aumentato a 2px, colore footer */
-    border-radius: 0.5rem;
-    box-shadow: none;
-    background-color: var(--cri-white);
-}
-
-/* Stile del Titolo (h2) dentro la card: Rosso e Grassetto */
-.md-typeset .md-grid > * .md-typeset__card h2 {
-    color: var(--cri-red) !important;
-    font-weight: bold; /* Aggiunto grassetto */
-}
-
-/* Stile della Descrizione (p, span, link) dentro la card: Colore Testo Footer */
-.md-typeset .md-grid > * .md-typeset__card p,
-.md-typeset .md-grid > * .md-typeset__card span,
-.md-typeset .md-grid > * .md-typeset__card a:not(h2 a) { /* Escludiamo il link del titolo se presente */
-    color: var(--copy) !important; /* Colore testo footer */
-}
-
-/* Assicuriamoci che l'hover sul link della card non cambi colore se non vogliamo */
-.md-typeset .md-grid > * .md-typeset__card a:hover p,
-.md-typeset .md-grid > * .md-typeset__card a:hover span {
-     color: var(--copy); /* Mantiene il colore del footer anche in hover */
-}
-
-/* ---- BLOCCO CONFLITTUALE RIMOSSO ---- */
-/* Il blocco che forzava tutto a rosso (--cri-red) è stato eliminato */
-
-
-/* 6. Correzione Colore Hover e Focus */
+/* 5. Correzione Colore Hover e Focus */
 /* Forza i tab di navigazione a rimanere rossi in stato di hover/focus */
 .md-tabs__link:hover,
 .md-tabs__link:focus,
@@ -120,10 +87,4 @@ a:hover,
 .md-typeset a:focus,
 .md-nav__link:focus {
     outline-color: var(--cri-red);
-}
-
-/* 7. Aumento Dimensione Logo Header */
-.md-header__button.md-logo img {
-    /* Altezza maggiorata per il logo CRI */
-    height: 1.8rem;
 }
