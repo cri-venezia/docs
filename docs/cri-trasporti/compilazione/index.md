@@ -45,4 +45,4 @@ Questa sezione ti guiderà passo-passo attraverso ogni pagina del form:
 
 Pronto/a per iniziare? Procedi alla guida della prima pagina.
 
-➡️ **[Inizia con Pagina 1: Informazioni sul Trasporto](pagina_1_info_trasporto.md)**
+➡️ **[Inizia con Pagina 1: Informazioni sul Trasporto](1_info_trasporto.md)**
