@@ -45,11 +45,12 @@ theme:
 # -----------------------------------------------------------------
 # Assumo che il percorso corretto sia docs/assets/css/cri.css (relativo a docs/)
 extra_css:
-  - assets/css/cri.css         # File principale
-  - assets/css/home_cards.css  # File specifico per le card
-  - assets/css/logo.css        # File specifico per il logo
-  - assets/css/header.css      # File specifico per Header
-  - assets/css/footer.css      # File specifigo per Footer
+  - assets/css/cri.css          # File principale
+  - assets/css/home_cards.css   # File specifico per le card
+  - assets/css/logo.css         # File specifico per il logo
+  - assets/css/header.css       # File specifico per Header
+  - assets/css/footer.css       # File specifico per Footer
+  - assets/css/typesetting.css  # File specifico per Headers e testo
 
 # -----------------------------------------------------------------
 # Estensioni Markdown
