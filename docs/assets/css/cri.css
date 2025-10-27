@@ -8,7 +8,7 @@
     --cri-red: #CC0000;
     --cri-white: #FFFFFF;
     --footer-dark: #111317;
-    --copy: #ffffff73;
+    --copy: #ffffff73; /* Grigio chiaro per testo su sfondo scuro */
 }
 
 /* 2. Colori Tema (Modo Light) - Per Header, Accent e Testo */
@@ -68,28 +68,45 @@
     color: var(--cri-red);
 }
 
-/* 5. Stili Homepage Cards (Layout con bordo e testo rosso) */
-/* Alta specificità per forzare l'override */
+/* 5. Stili Homepage Cards (Layout Aggiornato) */
+/* Stile base della card */
 .md-typeset .md-grid > * .md-typeset__card {
-    border: 1px solid var(--cri-red);
+    /* Bordo più spesso e scuro */
+    border: 2px solid var(--footer-dark); /* Aumentato a 2px, colore footer */
     border-radius: 0.5rem;
     box-shadow: none;
     background-color: var(--cri-white);
 }
 
-/* Forza il colore del testo e dei link interni della card ad essere Rosso CRI */
-.md-typeset .md-grid > * .md-typeset__card h2,
+/* Stile del Titolo (h2) dentro la card: Rosso e Grassetto */
+.md-typeset .md-grid > * .md-typeset__card h2 {
+    color: var(--cri-red) !important;
+    font-weight: bold; /* Aggiunto grassetto */
+}
+
+/* Stile della Descrizione (p, span, link) dentro la card: Colore Testo Footer */
 .md-typeset .md-grid > * .md-typeset__card p,
 .md-typeset .md-grid > * .md-typeset__card span,
-.md-typeset .md-grid > * .md-typeset__card a {
-    color: var(--cri-red) !important;
+.md-typeset .md-grid > * .md-typeset__card a:not(h2 a) { /* Escludiamo il link del titolo se presente */
+    color: var(--copy) !important; /* Colore testo footer */
 }
+
+/* Assicuriamoci che l'hover sul link della card non cambi colore se non vogliamo */
+.md-typeset .md-grid > * .md-typeset__card a:hover p,
+.md-typeset .md-grid > * .md-typeset__card a:hover span {
+     color: var(--copy); /* Mantiene il colore del footer anche in hover */
+}
+
+/* ---- BLOCCO CONFLITTUALE RIMOSSO ---- */
+/* Il blocco che forzava tutto a rosso (--cri-red) è stato eliminato */
+
 
 /* 6. Correzione Colore Hover e Focus */
 /* Forza i tab di navigazione a rimanere rossi in stato di hover/focus */
 .md-tabs__link:hover,
 .md-tabs__link:focus,
 .md-tabs__link--active {
+    /* Qui il colore deve rimanere rosso per indicare l'attivazione */
     color: var(--cri-red) !important;
 }
 
@@ -107,7 +124,6 @@ a:hover,
 
 /* 7. Aumento Dimensione Logo Header */
 .md-header__button.md-logo img {
-    /* Prova ad aumentare questo valore (default è circa 1.2rem) */
-    height: 1.8rem; /* Esempio: altezza maggiorata */
-    /* max-height: 2.5rem; */
+    /* Altezza maggiorata per il logo CRI */
+    height: 1.8rem;
 }
