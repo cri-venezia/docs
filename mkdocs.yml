@@ -50,7 +50,7 @@ extra_css:
   - assets/css/logo.css         # File specifico per il logo
   - assets/css/header.css       # File specifico per Header
   - assets/css/footer.css       # File specifico per Footer
-  - assets/css/typesetting.css  # File specifico per Headers e testo
+  - assets/css/typesetting.css  # File specifico per testo
   - assets/css/box.css          # File specifico per i box
 
 # -----------------------------------------------------------------
@@ -81,7 +81,12 @@ plugins:
   tags: {}
   git-revision-date-localized:
     type: date
-  redirects: {}
+  redirects:
+    redirect_maps:
+      # Cartella Cri Trasporti
+      'cri-trasporti/compilazione-form/info_trasporto.md': 'cri-trasporti/compilazione-form/1_info_trasporto.md'
+      'cri-trasporti/compilazione-form/dati_paziente.md': 'cri-trasporti/compilazione-form/3_dati_paziente.md'
+      'cri-trasporti/compilazione-form/luogo_prelievo.md': 'cri-trasporti/compilazione-form/2_luogo_prelievo.md'
   glightbox:
     touchNavigation: true
     loop: false
