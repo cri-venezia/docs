@@ -1,3 +1,5 @@
 nav:
     - Panoramica Docenti: index.md
-    - Utilizzo Pannello Gestione Date: gestione-date.md
+    - Gestione Prenotazioni: gestione_prenotazioni.md
+    - Gestione Date: gestione_date.md
+    
