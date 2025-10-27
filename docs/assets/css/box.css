@@ -1,0 +1,16 @@
+/* Regole Globali */
+.md-typeset .admonition-title, .md-typeset summary {
+    font-size: .8rem;
+    font-weight: inherit;
+    color: var(--footer-dark);
+}
+.md-typeset .admonition, .md-typeset details {
+    font-size: .8rem;
+    color: var(--footer-dark);
+}
+.md-typeset :is(.admonition,details) {
+    font-size: .8rem;
+}
+.md-typeset .admonition-title:before, .md-typeset summary:before {
+    transform: translateY(10%);
+}
