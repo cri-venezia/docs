@@ -30,37 +30,7 @@
     --md-typeset-a-color: var(--cri-red);
 }
 
-/* 3. Footer (Sfondo scuro, testo chiaro) */
-.md-footer {
-    background-color: var(--footer-dark);
-    color: var(--copy);
-}
-
-/* --- CORREZIONE HEADER (Bianco con Bordo) --- */
-.md-header {
-    /* Forza lo sfondo header a essere bianco */
-    background-color: var(--cri-white) !important;
-    /* Rimuove l'ombra di default per un look pulito */
-    box-shadow: none;
-    /* Aggiunge un sottile bordo/ombra solo in basso per separare dal contenuto */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-/* --- FINE CORREZIONE HEADER --- */
-
-
-/* --- CORREZIONE NAVIGAZIONE (Sfondo Scura) --- */
-.md-tabs {
-    background-color: var(--footer-dark);
-}
-
-/* Forzo il testo dei tab a essere sempre bianco */
-.md-tabs__link {
-    color: var(--cri-white) !important;
-}
-/* --- FINE CORREZIONE NAVIGAZIONE --- */
-
-
-/* 4. Stili Contenuto (Titoli Rossi) */
+/* 3. Stili Contenuto (Titoli Rossi) */
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
@@ -68,22 +38,15 @@
     color: var(--cri-red);
 }
 
-/* 5. Correzione Colore Hover e Focus */
-/* Forza i tab di navigazione a rimanere rossi in stato di hover/focus */
-.md-tabs__link:hover,
-.md-tabs__link:focus,
-.md-tabs__link--active {
-    /* Qui il colore deve rimanere rosso per indicare l'attivazione */
-    color: var(--cri-red) !important;
-}
 
-/* Forza i link generici a rimanere rossi in hover */
+
+/* 4. Forza i link generici a rimanere rossi in hover */
 a:hover,
 .md-typeset a:hover {
     color: var(--cri-red);
 }
 
-/* Forza il bordo focus (la cornice sottile che appare al focus) ad essere rosso */
+/* 5. Forza il bordo focus (la cornice sottile che appare al focus) ad essere rosso */
 .md-typeset a:focus,
 .md-nav__link:focus {
     outline-color: var(--cri-red);

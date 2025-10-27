@@ -4,14 +4,14 @@
 
 /* Applica il bordo scuro all'elemento LI o .card corretto */
 .md-typeset .grid.cards > ul > li,
-.md-typeset .grid > .card { /* Usiamo i selettori trovati */
-    border: 1px solid var(--footer-dark); /* Bordo scuro come richiesto */
+.md-typeset .grid > .card {
+    border: 1px solid var(--copy);
     border-radius: 0.5rem;
     box-shadow: none;
     background-color: var(--cri-white);
-    padding: 1rem; /* Aggiungiamo un po' di padding interno */
-    margin-bottom: 1rem; /* Spazio tra le card */
-    list-style-type: none; /* Rimuove i pallini della lista */
+    padding: 1rem;
+    margin-bottom: 1rem;
+    list-style-type: none;
 }
 
 /* Stile del Titolo (h2) dentro la card: Rosso e Grassetto */
@@ -19,15 +19,17 @@
 .md-typeset .grid > .card h2 {
     color: var(--cri-red) !important;
     font-weight: bold;
-    margin-top: 0; /* Rimuove margine sopra il titolo */
+    margin-top: 0;
 }
 
-/* Stile della Descrizione (p) dentro la card: Colore Testo Footer */
+/* --- MODIFICA APPLICATA QUI --- */
+/* Stile della Descrizione (p) dentro la card: COLORE SCURO (--footer-dark) */
 .md-typeset .grid.cards > ul > li p,
 .md-typeset .grid > .card p {
-    color: var(--copy) !important; /* Colore testo footer */
-    margin-bottom: 0; /* Rimuove margine sotto la descrizione */
+    color: var(--footer-dark) !important;
+    margin-bottom: 0;
 }
+/* --- FINE MODIFICA --- */
 
 /* Stile per i link dentro h2 (titolo cliccabile) */
 .md-typeset .grid.cards > ul > li h2 a,
@@ -37,5 +39,5 @@
 }
 .md-typeset .grid.cards > ul > li h2 a:hover,
 .md-typeset .grid > .card h2 a:hover {
-    text-decoration: underline; /* Sottolinea il titolo in hover */
+    text-decoration: underline;
 }
