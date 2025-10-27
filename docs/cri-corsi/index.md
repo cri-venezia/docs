@@ -1,3 +1,10 @@
+---
+title: CRI Corsi - Panoramica 
+description: Documentazione e risorse per il plugin CRI-Corsi realizzato per il Comitato di Venezia.
+hide:
+  - toc
+---
+
 ## A chi serve questa documentazione?
 
 Questa guida è divisa in due sezioni principali, dedicate ai due tipi di utenti che interagiranno con il plugin:

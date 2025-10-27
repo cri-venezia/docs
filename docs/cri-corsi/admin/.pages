@@ -1,0 +1,5 @@
+# docs/cri-plugins/cri-corsi/admin/.pages
+
+nav:
+    - Panoramica Admin: index.md
+    - Creazione di un Corso: crea_corso.md

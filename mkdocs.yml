@@ -2,7 +2,7 @@
 # Informazioni Progetto
 # -----------------------------------------------------------------
 site_name: "Documentazione CRI Venezia"
-site_url: "https://cridocs.b-cdn.net" # URL CDN di Bunny
+site_url: "https://docs.crivenezia.it" # URL CDN di Bunny
 site_author: "CRI Comitato di Venezia"
 site_description: "Documentazione interna e manuali per volontari e staff."
 
@@ -21,14 +21,16 @@ theme:
   custom_dir: src/overrides
 
   features:
+    - navigation.prune
     - navigation.tabs
-    - navigation.top
     - navigation.tabs.sticky
     - navigation.instant
+    - navigation.instant.progress
+    - navigation.top
+    - navigation.tracking
     - search.suggest
     - search.highlight
     - search.share
-    # Le feature di editing sono disattivate da repo_url e edit_uri sotto
 
   # Palette Colori (SOLO LIGHT MODE)
   palette:
@@ -68,8 +70,8 @@ markdown_extensions:
 plugins:
   search:
     lang: it
-  awesome-pages:
-    collapse_single_pages: false
+  awesome-nav:
+    flatten_single_child_sections: false
   tags: {}
   git-revision-date-localized:
     type: date

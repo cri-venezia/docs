@@ -1,5 +1,5 @@
 nav:
-    - Home: index.md
-    - CRI Corsi: cri-plugins/cri-corsi/
-    - CRI Trasporti: cri-plugins/cri-trasporti/
-    - Risorse Utili: risorse/
+    - Panoramica: index.md
+    - CRI Corsi: cri-corsi/
+    #- CRI Trasporti: cri-trasporti/
+    #- Risorse Utili: risorse/

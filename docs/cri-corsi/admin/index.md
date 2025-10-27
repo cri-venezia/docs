@@ -1,6 +1,8 @@
 ---
 title: Amministrazione - CRI Corsi
 description: Documentazione per la Segreteria e gli Amministratori del plugin CRI Corsi.
+hide:
+  - toc
 ---
 
 # Amministrazione Plugin CRI Corsi
@@ -16,7 +18,7 @@ Questa sezione copre tutte le funzionalità avanzate e di configurazione del plu
 <div class="grid cards" markdown>
 <div class="md-typeset__card" markdown>
 <h2>Creazione e Configurazione</h2>
-<p>Una guida passo-a-passo per utilizzare l'editor del corso, impostare prezzi, collegare prodotti WooCommerce e aggiungere indirizzi per le mappe. <a href="creazione-corso.md">Vai alla guida &rarr;</a></p>
+<p>Una guida passo-a-passo per utilizzare l'editor del corso, impostare prezzi, collegare prodotti WooCommerce e aggiungere indirizzi per le mappe. <a href="crea_corso.md">Vai alla guida &rarr;</a></p>
 </div>
 <div class="md-typeset__card" markdown>
 <h2>Gestione Prenotazioni</h2>

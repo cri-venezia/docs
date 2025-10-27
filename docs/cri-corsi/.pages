@@ -1,0 +1,5 @@
+# docs/cri-corsi/.pages
+
+nav:
+    - Panoramica: index.md
+    - Amministrazione: admin/index.md

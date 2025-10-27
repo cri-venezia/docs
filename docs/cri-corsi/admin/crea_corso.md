@@ -15,7 +15,7 @@ Per iniziare, accedi alla bacheca di WordPress e naviga su:
 
 Si aprirà l'editor standard di WordPress.
 
-| Azione | Immagine (CDN) |
+| Azione | Immagine |
 | :--- | :--- |
 | Navigazione nel menu amministrativo. | ![]({{ config.extra.cdn_url }}/img/menu_admin_corsi.png) |
 | Editor del nuovo corso. | ![]({{ config.extra.cdn_url }}/img/nuovo_corso.png) |
@@ -80,6 +80,3 @@ Una volta compilati tutti i campi, clicca sul pulsante **"Pubblica"** (in alto a
 
 !!! success "Completato"
     Il tuo corso è ora attivo e pronto per essere prenotato. Ricorda di inserirlo in una pagina tramite il widget Elementor!
-
-
-Adesso che la guida per gli Amministratori è completa, passiamo alla documentazione per i **Docenti** (Pannello "Gestione Date"). Sei pronto?
