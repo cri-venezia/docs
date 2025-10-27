@@ -14,7 +14,7 @@ theme:
   language: it
 
   # Aggiungi il percorso al logo (usando la variabile CDN)
-  logo: '{{ config.extra.cdn_url }}/logos/logo-venezia.svg'
+  logo: 'https://crive.b-cdn.net/wp-content/uploads/2024/09/h60-scuro-1.png'
   favicon: '{{ config.extra.cdn_url }}/logos/favicon.ico'
 
   # Abilita la cartella per le sovrascritture
@@ -37,18 +37,6 @@ theme:
   # Disattiva esplicitamente i link di editing
   repo_url: ""
   edit_uri: ""
-
-# -----------------------------------------------------------------
-# Struttura di Navigazione (Nav:)
-# -----------------------------------------------------------------
-# Awesome Pages prenderà il controllo, ma l'index deve essere definito.
-nav:
-  - Home: index.md
-  # La sidebar verrà generata da .pages nelle sottocartelle
-  - CRI-Corsi:
-      - cri-plugins/cri-corsi/
-  - CRI-Trasporti: cri-plugins/cri-trasporti/
-  - Risorse Utili: risorse/
 
 # -----------------------------------------------------------------
 # Caricamento CSS Extra
@@ -80,7 +68,8 @@ markdown_extensions:
 plugins:
   search:
     lang: it
-  awesome-pages: {}
+  awesome-pages:
+    collapse_single_pages: false
   tags: {}
   git-revision-date-localized:
     type: date
