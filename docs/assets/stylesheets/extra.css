@@ -1,0 +1,54 @@
+/* -----------------------------------------------------------------
+ * 1. Definizioni Colori Ufficiali
+ * ----------------------------------------------------------------- */
+:root {
+  --cri-red: #CC0000;
+  --cri-white: #FFFFFF;
+  --footer-dark: #111317;
+  --copy-color: #ffffff73;
+}
+
+/* -----------------------------------------------------------------
+ * 2. Sovrascrittura Colori Tema (SOLO MODALITÀ GIORNO)
+ * ----------------------------------------------------------------- */
+[data-md-color-scheme="default"] {
+  
+  /* Header: Sfondo bianco, testo scuro */
+  --md-primary-fg-color: var(--cri-white);
+  --md-primary-bg-color: var(--footer-dark); /* Testo/Icone scure */
+
+  /* Accent: Rosso (per link, hover, elementi attivi) */
+  --md-primary-fg-color--light: var(--cri-red);
+  --md-primary-fg-color--dark: var(--cri-red);
+  --md-accent-fg-color: var(--cri-red);
+
+  /* Footer: Sfondo scuro, testo chiaro */
+  --md-footer-bg-color: var(--footer-dark);
+  --md-footer-fg-color: var(--cri-white);
+  --md-footer-fg-color--light: var(--copy-color);
+}
+
+
+/* -----------------------------------------------------------------
+ * 3. (Opzionale) Classi di utilità
+ * ----------------------------------------------------------------- */
+.bg-cri-red {
+  background-color: var(--cri-red) !important;
+  color: var(--cri-white) !important; /* Testo bianco su sfondo rosso */
+}
+
+/* -----------------------------------------------------------------
+ * 4. Stili Contenuto (Titoli Rossi)
+ * ----------------------------------------------------------------- */
+
+/* Applica il colore rosso ai titoli (h1-h6) 
+ * solo in modalità giorno (default).
+ */
+[data-md-color-scheme="default"] .md-typeset h1,
+[data-md-color-scheme="default"] .md-typeset h2,
+[data-md-color-scheme="default"] .md-typeset h3,
+[data-md-color-scheme="default"] .md-typeset h4,
+[data-md-color-scheme="default"] .md-typeset h5,
+[data-md-color-scheme="default"] .md-typeset h6 {
+  color: var(--cri-red);
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block tabs %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="md-grid">
+    
+    <!-- Intestazione -->
+    <div style="text-align: center; margin: 2rem 0;">
+        <h1>Benvenuto/a nella Documentazione del Comitato di Venezia</h1>
+        <p class="md-lead">Esplora le nostre guide e procedure.</p>
+    </div>
+    <div class="grid cards">
+        <ul>
+            <li>
+                <a href="plugins/cri-corsi/index.md" class="card">
+                    <span class="card-title">CRI Corsi</span>
+                    <span class="card-text">Plugin per la gestione avanzata e la prenotazione dei corsi del Comitato di Venezia.</span>
+                </a>
+            </li>
+            <li>
+                <a href="plugins/cri-trasporti/index.md" class="card">
+                    <span class="card-title">CRI Trasporti</span>
+                    <span class="card-text">Plugin per automatizzare le richieste di trasporto sanitario.</span>
+                </a>
+            </li>
+            <li>
+                <a href="formazione/index.md" class="card">
+                    <span class="card-title">Formazione</span>
+                    <span class="card-text">Materiale formativo, video e tutorial.</span>
+                </a>
+            </li>
+            <li>
+                <a href="policy/index.md" class="card">
+                    <span class="card-title">Policy e Sicurezza</span>
+                    <span class="card-text">Linee guida, policy e procedure di sicurezza.</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

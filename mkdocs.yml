@@ -1,0 +1,87 @@
+# -----------------------------------------------------------------
+# Informazioni Progetto
+# -----------------------------------------------------------------
+site_name: "La Mia Documentazione"
+site_url: "https://esempio.pages.dev" # Sostituisci con il tuo URL di Cloudflare
+site_author: "Il Tuo Nome"
+site_description: "Una breve descrizione del progetto."
+
+# Copyright (Rimosso, lo gestiamo in overrides/main.html)
+# copyright: "Copyright &copy; 2024 Il Tuo Nome"
+
+# -----------------------------------------------------------------
+# Configurazione Tema (Material for MkDocs)
+# -----------------------------------------------------------------
+theme:
+  name: material
+  language: it  # Imposta la lingua italiana per il tema
+  
+  # Aggiungi il percorso al logo (preso dal CDN)
+  logo: "https://cridocs.b-cdn.net//logos/logo-venezia.svg"
+  favicon: "https://cridocs.b-cdn.net/logos/favicon.ico"
+
+  # Abilita la cartella per le sovrascritture
+  custom_dir: overrides
+
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
+  
+  # 5. Palette Colori (SOLO LIGHT MODE)
+  #    Questa è la configurazione corretta per solo light mode
+  palette:
+    scheme: default
+
+# -----------------------------------------------------------------
+# Caricamento CSS Extra
+# -----------------------------------------------------------------
+extra_css:
+  - assets/stylesheets/extra.css
+
+# -----------------------------------------------------------------
+# Estensioni Markdown
+# -----------------------------------------------------------------
+markdown_extensions:
+  - admonition # Per i box "note", "warning", "tip"
+  - pymdownx.details # Box collassabili
+  - pymdownx.superfences # Per annidare blocchi di codice
+  - pymdownx.tabbed: # Contenuto in "tab"
+      alternate_style: true
+  - attr_list # Per aggiungere attributi HTML (es. classi CSS)
+  - md_in_html
+
+# -----------------------------------------------------------------
+# Configurazione Plugin
+# -----------------------------------------------------------------
+plugins:
+  - search # Plugin di ricerca (integrato)
+  - awesome-pages # Per una navigazione più flessibile
+  - git-revision-date-localized:
+      type: "iso_datetime"
+      fallback_to_build_date: true
+  - redirects: # Per gestire reindirizzamenti di pagine vecchie
+      redirect_maps:
+        # 'vecchia-pagina.md': 'nuova-pagina.md'
+  - embed-external-markdown # Per includere MD da URL esterni
+  - video # Per integrare video
+  - glightbox # Per lightbox su immagini
+  - macros # Per usare variabili (come il nostro CDN)
+
+# -----------------------------------------------------------------
+# Variabili Extra (per il plugin Macros)
+# -----------------------------------------------------------------
+extra:
+  # Qui definiamo l'URL del tuo CDN Bunny
+  # Sostituiscilo con la tua Pull Zone!
+  cdn_url: "https://cridocs.b-cdn.net"
+
+  # Link per le icone social nel footer (a destra)
+  social:
+    - icon: "fontawesome/brands/linkedin"
+      link: "https://www.linkedin.com/tuo-profilo/"
+    - icon: "fontawesome/brands/facebook"
+      link: "https://www.facebook.com/tuo-profilo/"
+    - icon: "fontawesome/brands/instagram"
+      link: "https://www.instagram.com/tuo-profilo/"
+
