@@ -81,12 +81,7 @@ plugins:
   tags: {}
   git-revision-date-localized:
     type: date
-  redirects:
-    redirect_maps:
-      # Cartella Cri Trasporti
-      'cri-trasporti/compilazione-form/info_trasporto.md': 'cri-trasporti/compilazione-form/1_info_trasporto.md'
-      'cri-trasporti/compilazione-form/dati_paziente.md': 'cri-trasporti/compilazione-form/3_dati_paziente.md'
-      'cri-trasporti/compilazione-form/luogo_prelievo.md': 'cri-trasporti/compilazione-form/2_luogo_prelievo.md'
+  redirects: {}
   glightbox:
     touchNavigation: true
     loop: false
