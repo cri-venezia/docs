@@ -35,9 +35,9 @@
 .md-typeset .grid.cards > ul > li h2 a,
 .md-typeset .grid > .card h2 a {
     color: var(--cri-red) !important;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 .md-typeset .grid.cards > ul > li h2 a:hover,
 .md-typeset .grid > .card h2 a:hover {
-    text-decoration: underline;
+    text-decoration: none !important;
 }
