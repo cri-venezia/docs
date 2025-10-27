@@ -1,5 +1,4 @@
-title: CRI Corsi
+title: CRICorsi
 nav:
     - Panoramica: index.md
-    - Panormaica Admin: admin/index.md
-    - Creazione di un corso: admin/crea_corso.md
+    - Amministrazione: admin/

@@ -1,0 +1,5 @@
+title: Documentazione Amministratori
+
+nav:
+    - Panoramica Admin: index.md
+    - Creazione di un corso: crea_corso.md
