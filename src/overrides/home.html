@@ -11,40 +11,39 @@
         <p class="md-lead">Esplora le nostre guide e procedure.</p>
     </div>
 
-    <!-- Il tema Material si aspetta una griglia con titoli semantici -->
+    <!-- Struttura Card Corretta: Link solo sul titolo -->
     <div class="grid cards" style="margin-top: 1.5rem;">
         <ul>
             <!-- CRI Corsi -->
             <li>
-                <!-- Usa il percorso relativo diretto, risolvendo l'errore Jinja2 url_for -->
-                <a href="cri-corsi/" class="card">
-                    <!-- TAG H2 per il titolo -->
-                    <h2>CRI Corsi</h2>
-                    <!-- TAG P per la descrizione -->
+                <div class="card"> <!-- Usiamo un div o lasciamo solo li? Testiamo con div -->
+                    <!-- Link solo attorno al titolo -->
+                    <h2><a href="cri-plugins/cri-corsi/">CRI Corsi</a></h2>
+                    <!-- Descrizione fuori dal link -->
                     <p>Piattaforma e manuali per la gestione avanzata e la prenotazione dei corsi di formazione.</p>
-                </a>
+                </div>
             </li>
             <!-- CRI Trasporti -->
             <li>
-                <a href="cri-trasporti/" class="card">
-                    <h2>CRI Trasporti</h2>
+                 <div class="card">
+                    <h2><a href="cri-plugins/cri-trasporti/">CRI Trasporti</a></h2>
                     <p>Plugin per automatizzare le richieste di trasporto sanitario e la gestione dei mezzi.</p>
-                </a>
+                 </div>
             </li>
-            <!-- Formazione -->
+            <!-- Risorse Utili -->
             <li>
-                <a href="risorse/" class="card">
-                    <h2>Risorse Utili</h2>
+                 <div class="card">
+                    <h2><a href="risorse/">Risorse Utili</a></h2>
                     <p>Modulistica, guide rapide, link esterni e strumenti di lavoro essenziali.</p>
-                </a>
+                 </div>
             </li>
-            <!-- Policy e Sicurezza -->
-            <li>
-                <a href="policy/" class="card">
-                    <h2>Policy e Sicurezza</h2>
+            <!-- Policy e Sicurezza (Esempio, se la aggiungerai) -->
+            <!-- <li>
+                 <div class="card">
+                    <h2><a href="policy/">Policy e Sicurezza</a></h2>
                     <p>Linee guida, protocolli ufficiali e procedure di sicurezza per le operazioni.</p>
-                </a>
-            </li>
+                 </div>
+            </li> -->
         </ul>
     </div>
 </div>
