@@ -1,5 +1,5 @@
 ---
-title: Amministrazione - CRI Corsi
+title: Amministrazione
 description: Documentazione per la Segreteria e gli Amministratori del plugin CRI Corsi.
 hide:
   - toc

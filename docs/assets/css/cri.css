@@ -104,3 +104,10 @@ a:hover,
 .md-nav__link:focus {
     outline-color: var(--cri-red);
 }
+
+/* 7. Aumento Dimensione Logo Header */
+.md-header__button.md-logo img {
+    /* Prova ad aumentare questo valore (default è circa 1.2rem) */
+    height: 1.8rem; /* Esempio: altezza maggiorata */
+    /* max-height: 2.5rem; */
+}

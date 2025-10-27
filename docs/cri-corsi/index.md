@@ -1,5 +1,5 @@
 ---
-title: CRI Corsi - Panoramica 
+title: Panoramica
 description: Documentazione e risorse per il plugin CRI-Corsi realizzato per il Comitato di Venezia.
 hide:
   - toc

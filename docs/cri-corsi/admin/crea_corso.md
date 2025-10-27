@@ -11,14 +11,13 @@ Questa guida è destinata agli **Amministratori del Sito (Segreteria)** e spiega
 
 Per iniziare, accedi alla bacheca di WordPress e naviga su:
 
-**CRI Corsi > Aggiungi Nuovo**
+**CRI Corsi > Aggiungi Nuovo Corso**
+
+![]({{ config.extra.cdn_url }}/img/menu_admin_corsi.png)
 
 Si aprirà l'editor standard di WordPress.
 
-| Azione | Immagine |
-| :--- | :--- |
-| Navigazione nel menu amministrativo. | ![]({{ config.extra.cdn_url }}/img/menu_admin_corsi.png) |
-| Editor del nuovo corso. | ![]({{ config.extra.cdn_url }}/img/nuovo_corso.png) |
+![]({{ config.extra.cdn_url }}/img/nuovo_corso.png)
 
 ## 2. Campi Standard di WordPress
 
@@ -32,18 +31,25 @@ Compila i campi base nell'interfaccia standard di WordPress:
 
 Sotto l'editor di testo principale, troverai il riquadro **"Dettagli Corso"**. Qui si trova il cuore della configurazione del plugin.
 
-!!! info "Nota"
+![]({{ config.extra.cdn_url }}/img/dettagli_corso.png)
+
+??? info "Nota"
     Questo riquadro è diviso in schede (Date e Orari, Configurazione Corso) per mantenere l'interfaccia pulita.
 
 ### 3.1 Date e Orari Corso
 
-Questo campo è un **"ripetitore"** e gestisce le sessioni prenotabili del corso.
+Questo campo è un **"ripetitore"** e gestisce le sessioni prenotabili del corso. Utilizza il pulsante **"Aggiungi Riga"** per inserire una sessione.
 
-| Campo | Funzione | Importanza |
-| :--- | :--- | :--- |
-| **Data** | Seleziona la data della sessione dal calendario. | Obbligatorio |
-| **Durata** | Un campo di testo per specificare la durata (es. "4 ore", "09:00 - 13:00"). | Indicativo |
-| **Posti Disponibili** | Il numero massimo di persone che possono iscriversi a questa specifica sessione. | Cruciale |
+Per ogni riga (sessione):
+
+Data
+:   Seleziona la data della sessione dal calendario. (*Obbligatorio*)
+
+Durata
+:   Specifica la durata (es. "4 ore", "09:00 - 13:00"). (*Indicativo*)
+
+Posti Disponibili
+:   Il numero massimo di persone che possono iscriversi a questa specifica sessione. (*Cruciale*)
 
 ### 3.2 Configurazione Corso
 
@@ -58,21 +64,19 @@ Seleziona il target del corso:
 
 #### Prezzo e Pagamenti
 
-| Campo | Funzione | Note Importanti |
-| :--- | :--- | :--- |
-| **Prezzo** | Inserisci il costo del corso (es. `50.00`). | **Lascia vuoto se il corso è gratuito.** |
-| **ID Prodotto WooCommerce** | L'ID numerico del prodotto creato nel catalogo WooCommerce. | Se compilato (e il Prezzo è impostato), l'utente viene reindirizzato al carrello per il pagamento. |
+Prezzo
+:   Inserisci il costo del corso (es. `50.00`). **Lascia vuoto se il corso è gratuito.**
 
-!!! warning "Attenzione"
-    Per i corsi a pagamento, è **obbligatorio** creare il prodotto corrispondente in **WooCommerce > Prodotti** *prima* di compilare questo campo.
+ID Prodotto WooCommerce
+:   Inserisci l'ID numerico del prodotto creato nel catalogo WooCommerce. Se compilato (e il Prezzo è impostato), l'utente viene reindirizzato al carrello per il pagamento.
+
+!!! danger "Attenzione"
+    Per i corsi a pagamento, è **obbligatorio** creare il prodotto corrispondente in **WooCommerce > Prodotti** *prima* di compilare il campo ID Prodotto WooCommerce.
 
 #### Indirizzo e Mappa
 
-| Campo | Funzione |
-| :--- | :--- |
-| **Indirizzo (per Mappa)** | Inserisci l'indirizzo completo dove si terrà il corso (es. Via Porto di Cavergnago, 38/B, Venezia). |
-
-Se questo campo è compilato, il widget di Elementor visualizzerà automaticamente una mappa Leaflet interattiva.
+Indirizzo (per Mappa)
+:   Inserisci l'indirizzo completo dove si terrà il corso (es. Via Porto di Cavergnago, 38/B, Venezia). Se compilato, il widget di Elementor visualizzerà automaticamente una mappa Leaflet interattiva.
 
 ## 4. Pubblicazione
 
