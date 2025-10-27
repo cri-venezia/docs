@@ -1,11 +1,11 @@
-mkdocs-material==9.6.14
+mkdocs-material
 mkdocs-awesome-pages-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-redirects
-mkdocs-embed-external-markdown
-mkdocs-video
 mkdocs-glightbox
 mkdocs-macros-plugin  # <--- AGGIUNGI QUESTA RIGA
 pillow
 cairosvg
-urllib3<2.0
+urllib3
+pymdown-extensions
+markdown

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block tabs %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="md-grid">
+
+    <!-- Intestazione -->
+    <div style="text-align: center; margin: 2rem 0;">
+        <h1>Benvenuto/a nella Documentazione del Comitato di Venezia</h1>
+        <p class="md-lead">Esplora le nostre guide e procedure.</p>
+    </div>
+
+    <!-- Il tema Material si aspetta una griglia con titoli semantici -->
+    <div class="grid cards" style="margin-top: 1.5rem;">
+        <ul>
+            <!-- CRI Corsi -->
+            <li>
+                <!-- Usa il percorso relativo diretto, risolvendo l'errore Jinja2 url_for -->
+                <a href="cri-plugins/cri-corsi/" class="card">
+                    <!-- TAG H2 per il titolo -->
+                    <h2>CRI Corsi</h2>
+                    <!-- TAG P per la descrizione -->
+                    <p>Piattaforma e manuali per la gestione avanzata e la prenotazione dei corsi di formazione.</p>
+                </a>
+            </li>
+            <!-- CRI Trasporti -->
+            <li>
+                <a href="cri-plugins/cri-trasporti/" class="card">
+                    <h2>CRI Trasporti</h2>
+                    <p>Plugin per automatizzare le richieste di trasporto sanitario e la gestione dei mezzi.</p>
+                </a>
+            </li>
+            <!-- Formazione -->
+            <li>
+                <a href="risorse/" class="card">
+                    <h2>Risorse Utili</h2>
+                    <p>Modulistica, guide rapide, link esterni e strumenti di lavoro essenziali.</p>
+                </a>
+            </li>
+            <!-- Policy e Sicurezza -->
+            <li>
+                <a href="policy/" class="card">
+                    <h2>Policy e Sicurezza</h2>
+                    <p>Linee guida, protocolli ufficiali e procedure di sicurezza per le operazioni.</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

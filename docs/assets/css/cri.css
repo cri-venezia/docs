@@ -1,0 +1,106 @@
+/*
+ * Stili personalizzati della Croce Rossa Italiana (CRI)
+ * Basati sul tema Material for MkDocs.
+ */
+
+/* 1. Definizione delle Variabili CRI */
+:root {
+    --cri-red: #CC0000;
+    --cri-white: #FFFFFF;
+    --footer-dark: #111317;
+    --copy: #ffffff73;
+}
+
+/* 2. Colori Tema (Modo Light) - Per Header, Accent e Testo */
+[data-md-color-scheme="default"] {
+    /* Variabili principali del tema */
+    --md-theme-color-primary: var(--cri-white);
+    --md-theme-color-accent: var(--cri-red);
+
+    /* Colori del testo e dello sfondo generale */
+    --md-default-fg-color--light: var(--footer-dark);
+    --md-default-fg-color: var(--footer-dark);
+    --md-default-bg-color: var(--cri-white);
+
+    /* Colore testo header */
+    --md-header-fg-color: var(--footer-dark);
+
+    /* Colore link e focus */
+    --md-default-fg-color--focus: var(--cri-red);
+    --md-typeset-a-color: var(--cri-red);
+}
+
+/* 3. Footer (Sfondo scuro, testo chiaro) */
+.md-footer {
+    background-color: var(--footer-dark);
+    color: var(--copy);
+}
+
+/* --- CORREZIONE HEADER (Bianco con Bordo) --- */
+.md-header {
+    /* Forza lo sfondo header a essere bianco */
+    background-color: var(--cri-white) !important;
+    /* Rimuove l'ombra di default per un look pulito */
+    box-shadow: none;
+    /* Aggiunge un sottile bordo/ombra solo in basso per separare dal contenuto */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* --- FINE CORREZIONE HEADER --- */
+
+
+/* --- CORREZIONE NAVIGAZIONE (Sfondo Scura) --- */
+.md-tabs {
+    background-color: var(--footer-dark);
+}
+
+/* Forzo il testo dei tab a essere sempre bianco */
+.md-tabs__link {
+    color: var(--cri-white) !important;
+}
+/* --- FINE CORREZIONE NAVIGAZIONE --- */
+
+
+/* 4. Stili Contenuto (Titoli Rossi) */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+    color: var(--cri-red);
+}
+
+/* 5. Stili Homepage Cards (Layout con bordo e testo rosso) */
+/* Alta specificità per forzare l'override */
+.md-typeset .md-grid > * .md-typeset__card {
+    border: 1px solid var(--cri-red);
+    border-radius: 0.5rem;
+    box-shadow: none;
+    background-color: var(--cri-white);
+}
+
+/* Forza il colore del testo e dei link interni della card ad essere Rosso CRI */
+.md-typeset .md-grid > * .md-typeset__card h2,
+.md-typeset .md-grid > * .md-typeset__card p,
+.md-typeset .md-grid > * .md-typeset__card span,
+.md-typeset .md-grid > * .md-typeset__card a {
+    color: var(--cri-red) !important;
+}
+
+/* 6. Correzione Colore Hover e Focus */
+/* Forza i tab di navigazione a rimanere rossi in stato di hover/focus */
+.md-tabs__link:hover,
+.md-tabs__link:focus,
+.md-tabs__link--active {
+    color: var(--cri-red) !important;
+}
+
+/* Forza i link generici a rimanere rossi in hover */
+a:hover,
+.md-typeset a:hover {
+    color: var(--cri-red);
+}
+
+/* Forza il bordo focus (la cornice sottile che appare al focus) ad essere rosso */
+.md-typeset a:focus,
+.md-nav__link:focus {
+    outline-color: var(--cri-red);
+}

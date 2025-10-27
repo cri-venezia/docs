@@ -1,82 +1,110 @@
 # -----------------------------------------------------------------
 # Informazioni Progetto
 # -----------------------------------------------------------------
-site_name: "La Mia Documentazione"
-site_url: "https://esempio.pages.dev" # Sostituisci con il tuo URL di Cloudflare
-site_author: "Il Tuo Nome"
-site_description: "Una breve descrizione del progetto."
-
-# Copyright (Rimosso, lo gestiamo in overrides/main.html)
-# copyright: "Copyright &copy; 2024 Il Tuo Nome"
+site_name: "Documentazione CRI Venezia"
+site_url: "https://cridocs.b-cdn.net" # URL CDN di Bunny
+site_author: "CRI Comitato di Venezia"
+site_description: "Documentazione interna e manuali per volontari e staff."
 
 # -----------------------------------------------------------------
 # Configurazione Tema (Material for MkDocs)
 # -----------------------------------------------------------------
 theme:
   name: material
-  language: it  # Imposta la lingua italiana per il tema
-  
-  # Aggiungi il percorso al logo (preso dal CDN)
-  logo: "https://cridocs.b-cdn.net//logos/logo-venezia.svg"
-  favicon: "https://cridocs.b-cdn.net/logos/favicon.ico"
+  language: it
+
+  # Aggiungi il percorso al logo (usando la variabile CDN)
+  logo: '{{ config.extra.cdn_url }}/logos/logo-venezia.svg'
+  favicon: '{{ config.extra.cdn_url }}/logos/favicon.ico'
 
   # Abilita la cartella per le sovrascritture
-  custom_dir: overrides
+  custom_dir: src/overrides
 
   features:
     - navigation.tabs
     - navigation.top
+    - navigation.tabs.sticky
+    - navigation.instant
     - search.suggest
-  
-  # 5. Palette Colori (SOLO LIGHT MODE)
-  #    Questa è la configurazione corretta per solo light mode
+    - search.highlight
+    - search.share
+    # Le feature di editing sono disattivate da repo_url e edit_uri sotto
+
+  # Palette Colori (SOLO LIGHT MODE)
   palette:
     scheme: default
+
+  # Disattiva esplicitamente i link di editing
+  repo_url: ""
+  edit_uri: ""
+
+# -----------------------------------------------------------------
+# Struttura di Navigazione (Nav:)
+# -----------------------------------------------------------------
+# Awesome Pages prenderà il controllo, ma l'index deve essere definito.
+nav:
+  - Home: index.md
+  # La sidebar verrà generata da .pages nelle sottocartelle
+  - CRI-Corsi:
+      - cri-plugins/cri-corsi/
+  - CRI-Trasporti: cri-plugins/cri-trasporti/
+  - Risorse Utili: risorse/
 
 # -----------------------------------------------------------------
 # Caricamento CSS Extra
 # -----------------------------------------------------------------
+# Assumo che il percorso corretto sia docs/assets/css/cri.css (relativo a docs/)
 extra_css:
-  - assets/stylesheets/extra.css
+  - assets/css/cri.css
 
 # -----------------------------------------------------------------
 # Estensioni Markdown
 # -----------------------------------------------------------------
 markdown_extensions:
-  - admonition # Per i box "note", "warning", "tip"
-  - pymdownx.details # Box collassabili
-  - pymdownx.superfences # Per annidare blocchi di codice
-  - pymdownx.tabbed: # Contenuto in "tab"
+  admonition: {}
+  pymdownx.details: {}
+  pymdownx.superfences: {}
+  pymdownx.caret: {}
+  pymdownx.critic: {}
+  pymdownx.mark: {}
+  pymdownx.tilde: {}
+  pymdownx.keys: {}
+  pymdownx.tabbed:
       alternate_style: true
-  - attr_list # Per aggiungere attributi HTML (es. classi CSS)
-  - md_in_html
-
+  attr_list: {}
+  md_in_html: {}
+  meta: {}
 # -----------------------------------------------------------------
 # Configurazione Plugin
 # -----------------------------------------------------------------
 plugins:
-  - search # Plugin di ricerca (integrato)
-  - awesome-pages # Per una navigazione più flessibile
-  - git-revision-date-localized:
-      type: "iso_datetime"
-      fallback_to_build_date: true
-  - redirects: # Per gestire reindirizzamenti di pagine vecchie
-      redirect_maps:
-        # 'vecchia-pagina.md': 'nuova-pagina.md'
-  - embed-external-markdown # Per includere MD da URL esterni
-  - video # Per integrare video
-  - glightbox # Per lightbox su immagini
-  - macros # Per usare variabili (come il nostro CDN)
+  search:
+    lang: it
+  awesome-pages: {}
+  tags: {}
+  git-revision-date-localized:
+    type: date
+  redirects: {}
+  glightbox:
+    touchNavigation: true
+    loop: false
+    effect: zoom
+    width: 100%
+    height: auto
+    zoomable: true
+    draggable: true
+    skip_classes:
+      - skip-lightbox
+    auto_caption: false
+    caption_position: bottom
+  macros: {}
+
 
 # -----------------------------------------------------------------
 # Variabili Extra (per il plugin Macros)
 # -----------------------------------------------------------------
 extra:
-  # Qui definiamo l'URL del tuo CDN Bunny
-  # Sostituiscilo con la tua Pull Zone!
   cdn_url: "https://cridocs.b-cdn.net"
-
-  # Link per le icone social nel footer (a destra)
   social:
     - icon: "fontawesome/brands/linkedin"
       link: "https://www.linkedin.com/tuo-profilo/"
@@ -84,4 +112,3 @@ extra:
       link: "https://www.facebook.com/tuo-profilo/"
     - icon: "fontawesome/brands/instagram"
       link: "https://www.instagram.com/tuo-profilo/"
-
