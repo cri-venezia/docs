@@ -11,12 +11,12 @@ Questa guida è divisa in due sezioni principali, dedicate ai due tipi di utenti
 
 <div class="grid cards" markdown>
 <ul>
-<li>
-    <h2>Amministratori del Sito (Segreteria)</h2>
+<!-- <li>
+    <h2><a href="admin/">Amministratori del sito e Segreteria</a></h2>
     <p>Utenti che hanno bisogno di creare nuovi corsi, configurarli, impostare i prezzi e gestire le prenotazioni.</p>
-</li>
+</li> -->
 <li>
-    <h2>Docenti</h2>
+    <h2><a href="docenti/">Docenti</a> </h2>
     <p>Utenti che hanno bisogno di un accesso rapido e semplificato per aggiungere o rimuovere le date dei corsi a loro assegnati.</p>
 </li>
 </ul>
