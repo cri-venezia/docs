@@ -15,7 +15,7 @@ theme:
 
   # Aggiungi il percorso al logo (usando la variabile CDN)
   logo: 'https://crive.b-cdn.net/wp-content/uploads/2024/09/h60-scuro-1.png'
-  favicon: '{{ config.extra.cdn_url }}/logos/favicon.ico'
+  favicon: 'https://crive.b-cdn.net/wp-content/uploads/cropped-marchio-cri-venezia-verticale-1-192x192.webp'
 
   # Abilita la cartella per le sovrascritture
   custom_dir: src/overrides
