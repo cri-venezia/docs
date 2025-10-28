@@ -103,9 +103,9 @@ plugins:
 extra:
   cdn_url: "https://cridocs.b-cdn.net"
   social:
-    - icon: "fontawesome/brands/linkedin"
-      link: "https://www.linkedin.com/tuo-profilo/"
+    - icon: "fontawesome/brands/github"
+      link: "https://github.com/cri-venezia"
     - icon: "fontawesome/brands/facebook"
-      link: "https://www.facebook.com/tuo-profilo/"
+      link: "https://www.facebook.com/crivenezia/"
     - icon: "fontawesome/brands/instagram"
-      link: "https://www.instagram.com/tuo-profilo/"
+      link: "https://www.instagram.com/cri_venezia/"
