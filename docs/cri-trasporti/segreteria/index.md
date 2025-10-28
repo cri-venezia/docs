@@ -18,7 +18,7 @@ Qui troverai le istruzioni su come visualizzare le richieste in arrivo, approvar
 <div class="grid cards" markdown>
 <ul>
 <li>
-<a href="1_gestione_richieste.md" class="card-link"> <!-- Link corretto -->
+<a href="1_gestione_richieste" class="card-link"> <!-- Link corretto -->
     <h2>Gestione Richieste Ricevute</h2>
 </a>
 <p>Una guida dettagliata su come accedere alla tabella delle richieste, interpretare le informazioni e utilizzare le azioni disponibili (PDF, Cancella, Approva, Contatta).</p>
