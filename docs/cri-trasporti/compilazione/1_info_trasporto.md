@@ -18,8 +18,8 @@ In questa sezione, inserisci semplicemente il tuo **Nome** e **Cognome**.
 
 Utilizza il campo **Data del Trasporto** per selezionare il giorno in cui è necessario il servizio. Cliccando sul campo si aprirà un calendario (datepicker) da cui potrai scegliere la data desiderata.
 
-!!! warning "Anticipo Richiesta"
-Ricorda di inviare la richiesta con un anticipo adeguato per permettere alla Segreteria di organizzare il servizio. Verifica eventuali indicazioni specifiche sui tempi minimi richiesti.
+!!! danger "**Anticipa la Richiesta**"
+    Ricorda di inviare la richiesta con un anticipo adeguato per permettere alla Segreteria di organizzare il servizio. Verifica eventuali indicazioni specifiche sui tempi minimi richiesti.
 
 ## 3. Motivazione del Trasporto
 

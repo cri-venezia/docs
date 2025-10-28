@@ -26,7 +26,7 @@ Luogo di Nascita
 Codice Fiscale
 :   Inserisci il **Codice Fiscale** completo del paziente. Questo campo è importante per l'identificazione univoca.
 
-!!! tip "Verifica Codice Fiscale"
+!!! tip "**Verifica Codice Fiscale**"
     Assicurati che il Codice Fiscale inserito sia corretto per evitare problemi in fase di gestione della richiesta.
 
 ---
@@ -50,7 +50,7 @@ Una volta compilati tutti i campi di questa pagina:
 1.  **Rileggi** attentamente tutti i dati inseriti nelle tre pagine per assicurarti che siano corretti.
 2.  Clicca sul pulsante **"Invia Richiesta"** o **"Completa"**.
 
-!!! success "Richiesta Inviata!"
+!!! success "**Richiesta Inviata!**"
     Dopo l'invio, riceverai un'email di conferma all'indirizzo specificato. La Segreteria del Comitato CRI di Venezia ha ricevuto la tua richiesta e la processerà il prima possibile.
 
 ---
