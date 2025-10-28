@@ -52,7 +52,7 @@ extra_css:
   - assets/css/footer.css       # File specifico per Footer
   - assets/css/typesetting.css  # File specifico per testo
   - assets/css/box.css          # File specifico per i box
-  . assets/css/mobile.css       # File specifico per mobile 
+  - assets/css/mobile.css       # File specifico per mobile 
 
 # -----------------------------------------------------------------
 # Estensioni Markdown
