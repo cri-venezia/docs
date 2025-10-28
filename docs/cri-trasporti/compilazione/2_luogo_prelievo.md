@@ -18,19 +18,19 @@ Scegli l'opzione che corrisponde al luogo di prelievo dal menu a tendina:
 <div class="grid cards" markdown>
 <ul>
 <li>
-    <h2>Domicilio</h2>
+    <h2><a href="#se-hai-selezionato-domicilio">Domicilio</a> </h2>
     <p>Seleziona questa opzione se il paziente si trova presso la sua abitazione privata.</p>
 </li>
 <li>
-    <h2>RSA</h2>
+    <h2><a href="#se-hai-selezionato-rsa-ambulatorio-o-ospedale">RSA</a> </h2>
     <p>Seleziona questa opzione se il paziente si trova in una Residenza Sanitaria Assistenziale.</p>
 </li>
 <li>
-    <h2>Ambulatorio</h2>
+    <h2><a href="#se-hai-selezionato-rsa-ambulatorio-o-ospedale">Ambulatorio</a></h2>
     <p>Seleziona questa opzione se il paziente si trova presso un ambulatorio medico o una struttura simile.</p>
 </li>
 <li>
-    <h2>Ospedale</h2>
+    <h2><a href="#se-hai-selezionato-rsa-ambulatorio-o-ospedale">Ospedale</a></h2>
     <p>Seleziona questa opzione se il paziente si trova in una struttura ospedaliera.</p>
 </li>
 </ul>

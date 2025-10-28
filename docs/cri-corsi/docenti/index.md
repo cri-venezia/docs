@@ -30,7 +30,7 @@ Tutto questo senza dover navigare nell'editor completo di WordPress, rendendo l'
 <div class="grid cards" markdown>
 <div class="md-typeset__card" markdown>
 <h2>Utilizzo del Pannello "Gestione Date"</h2>
-<p>Una guida passo-passo che ti mostra come accedere e utilizzare l'interfaccia dedicata per aggiornare le date dei tuoi corsi. <a href="gestione-date.md">Vai alla guida &rarr;</a></p>
+<p>Una guida passo-passo che ti mostra come accedere e utilizzare l'interfaccia dedicata per aggiornare le date dei tuoi corsi. <a href="gestione_date">Vai alla guida &rarr;</a></p>
 </div>
 </div>
 

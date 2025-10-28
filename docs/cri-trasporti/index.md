@@ -27,7 +27,7 @@ Questa sezione ti guiderà passo-passo attraverso ogni pagina del form. Clicca s
 </li>
 <li>
 <a href="compilazione/2_luogo_prelievo"> <!-- Link corretto -->
-    <h2>Pagina 2: Luogo Prelievo</h2>
+    <h2>Pagina 2: Luogo del Prelievo</h2>
 </a>
 <p>Indicazione del luogo di prelievo (Domicilio, RSA, Ospedale) e dettagli sull'accessibilità.</p>
 </li>
