@@ -1,3 +1,7 @@
+/*
+ * Stile per il Logo nell'Header
+ */
+
 .md-header__button.md-logo img {
     /* Altezza maggiorata per il logo CRI */
     height: 1.8rem;

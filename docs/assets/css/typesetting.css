@@ -1,4 +1,11 @@
-.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
-    color: var(--cri-red);
-    font-weight: 700 !important;
+/*
+ * Stili per il contenuto (md-typeset)
+ */
+
+/* Titoli H1-H4 Rossi */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+    color: var(--cri-rosso);
 }

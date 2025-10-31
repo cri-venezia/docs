@@ -1,21 +1,18 @@
-@media screen and (max-width: 76.1875em) { /* Breakpoint standard di Material */
-    .md-header {
-        /* Assicuriamoci che l'header (o la sua versione mobile) sia visibile */
-        display: block; /* O 'flex' se necessario */
-        /* Riapplichiamo lo sfondo bianco, se il tema lo sovrascrive */
-        background-color: var(--cri-white) !important;
-        /* Riapplichiamo il bordo inferiore */
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        box-shadow: none; /* Rimuoviamo eventuali ombre aggiunte dal tema mobile */
-    }
+/*
+ * Ottimizzazioni per Mobile
+ */
 
-    /* Assicuriamoci che il logo sia ancora visibile */
-    .md-header__button.md-logo {
-        display: block; /* O 'inline-block' */
+@media screen and (max-width: 76.1875em) {
+    .md-header {
+        display: block;
+        background-color: var(--cri-white) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: none;
     }
-    
-    /* Potrebbe essere necessario aggiustare il colore del testo/icone specifici per mobile se diventano invisibili */
+    .md-header__button.md-logo {
+        display: block;
+    }
      .md-header .md-icon {
-         color: var(--footer-dark); /* Forza le icone (es. menu) a essere scure */
+         color: var(--cri-nero); /* Icone Nere (es. Hamburger) */
      }
 }

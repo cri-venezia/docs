@@ -1,53 +1,78 @@
 /*
- * Stili personalizzati della Croce Rossa Italiana (CRI)
- * Basati sul tema Material for MkDocs.
+ * Stili Globali CRI (Variabili, Font, Tema Base)
  */
 
-/* 1. Definizione delle Variabili CRI */
+/* Importazione Font Karla */
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* 1. Definizione delle Variabili (Palette Ufficiale) */
 :root {
-    --cri-red: #CC0000;
-    --cri-white: #FFFFFF;
-    --footer-dark: #111317;
-    --copy: #ffffff73; /* Grigio chiaro per testo su sfondo scuro */
+    --cri-rosso: #CC0000;   /* R204 G0 B0 */
+    --cri-verde: #106C59;   /* R16 G108 B89 */
+    --cri-bianco: #FFFFFF;
+    --cri-nero: #000000;
+
+    /* Mappatura per il tema */
+    --footer-dark: var(--cri-nero);
+    --copy: #ffffff73;
 }
 
-/* 2. Colori Tema (Modo Light) - Per Header, Accent e Testo */
-[data-md-color-scheme="default"] {
-    /* Variabili principali del tema */
-    --md-theme-color-primary: var(--cri-white);
-    --md-theme-color-accent: var(--cri-red);
-
-    /* Colori del testo e dello sfondo generale */
-    --md-default-fg-color--light: var(--footer-dark);
-    --md-default-fg-color: var(--footer-dark);
-    --md-default-bg-color: var(--cri-white);
-
-    /* Colore testo header */
-    --md-header-fg-color: var(--footer-dark);
-
-    /* Colore link e focus */
-    --md-default-fg-color--focus: var(--cri-red);
-    --md-typeset-a-color: var(--cri-red);
-}
-
-/* 3. Stili Contenuto (Titoli Rossi) */
+/* Applicazione Font Karla Globale */
+body,
+.md-tabs,
+.md-nav,
+.md-header__title,
+.md-typeset,
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
-.md-typeset h4 {
-    color: var(--cri-red);
+.md-typeset h4,
+.md-typeset p {
+    font-family: 'Karla', sans-serif;
 }
 
+/* 2. Colori Tema (Modo Light) */
+[data-md-color-scheme="default"] {
+    --md-theme-color-primary: var(--cri-bianco);
+    --md-theme-color-accent: var(--cri-rosso);
+    --md-default-fg-color--light: var(--cri-nero);
+    --md-default-fg-color: var(--cri-nero);
+    --md-default-bg-color: var(--cri-bianco);
+    --md-header-fg-color: var(--cri-nero);
+    --md-default-fg-color--focus: var(--cri-rosso);
+    --md-typeset-a-color: var(--cri-rosso);
+}
 
+/* 3. Stili Strutturali (Header, Footer, Nav) */
+.md-footer {
+    background-color: var(--cri-nero);
+    color: var(--copy);
+}
 
-/* 4. Forza i link generici a rimanere rossi in hover */
+.md-header {
+    background-color: var(--cri-bianco) !important;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.md-tabs {
+    background-color: var(--cri-nero);
+}
+.md-tabs__link {
+    color: var(--cri-white) !important;
+}
+
+/* 4. Stili Hover Globali (Rosso) */
+.md-tabs__link:hover,
+.md-tabs__link:focus,
+.md-tabs__link--active {
+    color: var(--cri-rosso) !important;
+}
 a:hover,
 .md-typeset a:hover {
-    color: var(--cri-red);
+    color: var(--cri-rosso);
 }
-
-/* 5. Forza il bordo focus (la cornice sottile che appare al focus) ad essere rosso */
 .md-typeset a:focus,
 .md-nav__link:focus {
-    outline-color: var(--cri-red);
+    outline-color: var(--cri-rosso);
 }

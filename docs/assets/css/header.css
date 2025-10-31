@@ -1,6 +1,6 @@
 .md-header {
     /* Forza lo sfondo header a essere bianco */
-    background-color: var(--cri-white) !important;
+    background-color: var(--cri-bianco) !important;
     /* Rimuove l'ombra di default per un look pulito */
     box-shadow: none;
     /* Aggiunge un sottile bordo/ombra solo in basso per separare dal contenuto */
@@ -13,13 +13,13 @@
 
 /* Forzo il testo dei tab a essere sempre bianco */
 .md-tabs__link {
-    color: var(--cri-white) !important;
+    color: var(--cri-bianco) !important;
 }
 
 /* Forza i tab di navigazione a rimanere rossi in stato di hover/focus */
+/* 4. Correzione Colore Hover e Focus (Rosso) */
 .md-tabs__link:hover,
 .md-tabs__link:focus,
 .md-tabs__link--active {
-    /* Qui il colore deve rimanere rosso per indicare l'attivazione */
-    color: var(--cri-red) !important;
+    color: var(--cri-rosso) !important;
 }
