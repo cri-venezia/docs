@@ -20,19 +20,19 @@ Questa sezione ti guiderà passo-passo attraverso ogni pagina del form. Clicca s
 <div class="grid cards" markdown>
 <ul>
 <li>
-<a href="compilazione/1_info_trasporto"> <!-- Link corretto -->
+<a href="compilazione/info_trasporto/"> <!-- Link corretto -->
     <h2>Pagina 1: Info Trasporto</h2>
 </a>
 <p>Inserimento dati del richiedente, data, motivazione (Visita, Trasferimento, ecc.) e campi specifici.</p>
 </li>
 <li>
-<a href="compilazione/2_luogo_prelievo"> <!-- Link corretto -->
+<a href="compilazione/luogo_prelievo/"> <!-- Link corretto -->
     <h2>Pagina 2: Luogo del Prelievo</h2>
 </a>
 <p>Indicazione del luogo di prelievo (Domicilio, RSA, Ospedale) e dettagli sull'accessibilità.</p>
 </li>
 <li>
-<a href="compilazione/3_dati_paziente"> <!-- Link corretto -->
+<a href="compilazione/dati_paziente/"> <!-- Link corretto -->
     <h2>Pagina 3: Dati Paziente</h2>
 </a>
 <p>Inserimento dati anagrafici (nascita, CF) e recapiti di contatto del paziente.</p>
@@ -49,8 +49,4 @@ Questa sezione ti guiderà passo-passo attraverso ogni pagina del form. Clicca s
     Nelle prossime versioni del plugin, stiamo valutando l'introduzione di un sistema che permetta al richiedente, se lo desidera, di ricevere aggiornamenti automatici sullo stato di avanzamento della richiesta (es. Approvata, Assegnata, Completata).
 
 !!! info "Navigazione"
-    Puoi usare le schede qui sopra o la navigazione laterale per spostarti tra le pagine della guida. Alla fine di ogni pagina troverai un link per procedere alla successiva.
-
-Pronto/a per iniziare? Procedi alla guida della prima pagina.
-
-➡️ **[Inizia con Pagina 1: Informazioni sul Trasporto](compilazione/1_info_trasporto.md)**
+    Puoi usare le schede qui sopra o la navigazione laterale per spostarti tra le pagine della guida.

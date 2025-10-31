@@ -1,5 +1,5 @@
 ---
-title: Guida alla Compilazione - Pagina 3
+title: 3. Guida alla Compilazione - Pagina 3
 description: Come inserire i dati anagrafici e i recapiti del paziente nel form di richiesta trasporto.
 ---
 
@@ -52,7 +52,3 @@ Una volta compilati tutti i campi di questa pagina:
 
 !!! success "**Richiesta Inviata!**"
     Dopo l'invio, riceverai un'email di conferma all'indirizzo specificato. La Segreteria del Comitato CRI di Venezia ha ricevuto la tua richiesta e la processerà il prima possibile.
-
----
-
-⬅️ **[Pagina Precedente: Luogo Prelievo](2_luogo_prelievo.md)**

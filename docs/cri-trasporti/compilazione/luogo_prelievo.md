@@ -1,5 +1,5 @@
 ---
-title: Guida alla Compilazione - Pagina 2
+title: 2. Guida alla Compilazione - Pagina 2
 description: Come specificare il luogo di prelievo del paziente nel form di richiesta trasporto - Domicilio, Strutture, Accessibilità.
 ---
 
@@ -82,9 +82,3 @@ Ecco alcuni esempi visivi dei campi per le strutture:
 
 !!! example "Esempio Ospedale"
     ![Campi per Luogo Ospedale]({{ config.extra.cdn_url }}/img/trasporto_luogo_ospedale.png)
-
----
-
-Una volta compilati tutti i campi relativi al luogo di prelievo, clicca sul pulsante **"Avanti"** o **"Prosegui"** per passare alla Pagina 3 (Dati Anagrafici Paziente).
-
-⬅️ **[Pagina Precedente: Info Trasporto](1_info_trasporto.md)** | ➡️ **[Prossima Pagina: Dati Paziente](3_dati_paziente.md)**

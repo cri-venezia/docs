@@ -1,5 +1,5 @@
 ---
-title: Guida alla Compilazione - Pagina 1
+title: 1. Guida alla Compilazione - Pagina 1
 description: Come compilare la prima pagina del form di richiesta trasporto - Dati richiedente, data e motivazione.
 
 ---
@@ -66,7 +66,3 @@ Se selezioni "Dimissioni", dovrai inserire:
 ### Opzione: Altro
 
 Se nessuna delle opzioni precedenti corrisponde, seleziona "Altro" e usa il campo di testo che appare per descrivere brevemente la motivazione specifica del trasporto.
-
-Una volta compilati tutti i campi di questa pagina, clicca sul pulsante "Avanti" o "Prosegui" per passare alla Pagina 2 (Luogo di Prelievo).
-
-➡️ Prossima Pagina: [Luogo di Prelievo](2_luogo_prelievo.md)

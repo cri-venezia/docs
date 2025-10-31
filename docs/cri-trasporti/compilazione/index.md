@@ -17,16 +17,16 @@ Questo form è stato progettato per raccogliere in modo strutturato tutte le inf
 
 Questa sezione ti guiderà passo-passo attraverso ogni pagina del form:
 
-1.  **[Pagina 1: Informazioni sul Trasporto](1_info_trasporto.md)**
+1.  **[Pagina 1: Informazioni sul Trasporto](info_trasporto.md)**
     * Inserimento dati del richiedente.
     * Selezione della data del trasporto.
     * Scelta della motivazione (Visita, Trasferimento, Ricovero, Dimissioni, Altro) e compilazione dei campi specifici.
 
-2.  **[Pagina 2: Luogo di Prelievo](2_luogo_prelievo.md)**
+2.  **[Pagina 2: Luogo di Prelievo](luogo_prelievo.md)**
     * Indicazione del luogo dove il paziente deve essere prelevato (Domicilio, RSA, Ospedale, Ambulatorio).
     * Compilazione dei dettagli relativi all'indirizzo e all'accessibilità (piano, ascensore, scale).
 
-3.  **[Pagina 3: Dati Anagrafici Paziente](3_dati_paziente.md)**
+3.  **[Pagina 3: Dati Anagrafici Paziente](dati_paziente.md)**
     * Inserimento dei dati del paziente (data/luogo nascita, CF).
     * Fornitura dei recapiti di contatto (telefono, email).
 
@@ -41,8 +41,4 @@ Questa sezione ti guiderà passo-passo attraverso ogni pagina del form:
 ---
 
 !!! info "Navigazione"
-    Puoi usare i link qui sopra o la navigazione laterale per spostarti tra le pagine della guida. Alla fine di ogni pagina troverai un link per procedere alla successiva.
-
-Pronto/a per iniziare? Procedi alla guida della prima pagina.
-
-➡️ **[Inizia con Pagina 1: Informazioni sul Trasporto](1_info_trasporto.md)**
+    Puoi usare i link qui sopra o la navigazione laterale per spostarti tra le pagine della guida. 

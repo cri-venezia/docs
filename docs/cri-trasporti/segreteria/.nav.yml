@@ -1,0 +1,6 @@
+sort:
+  by: title
+
+nav:
+  - Panoramica: index.md
+  - Gestione Richieste: gestione_richieste.md
