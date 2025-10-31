@@ -1,0 +1,7 @@
+# Definisce l'ordine della sidebar per la sezione Social Network
+nav:
+    - Panoramica: index.md
+    - 4.1 Comportamento Personale: comportamento_personale.md
+    - 4.2 Ruolo Brand Ambassador: ruolo_brand_ambassador.md
+    - 4.3 Post e Condivisione: post_e_condivisione_ufficiale.md
+    - 4.4 Video e Reel: video_e_reel.md

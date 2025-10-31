@@ -1,0 +1,12 @@
+# Definisce la sidebar per il Manuale di Comunicazione
+nav:
+  - Introduzione: index.md
+  - 1. Identità Visiva: identita_visiva.md
+  - 2. Fotografie: fotografie.md
+  - 3. Condivisione Materiale: condivisione_materiale.md
+  - 4. Social Network: social_network/
+  - 5. Servizi Particolari: servizi_particolari/
+  - 6. Materiale Pubblicitario: materiale_pubblicitario/
+  - 7. Contenuti: contenuti.md
+  - 8. Gruppo Giovani: gruppo_giovani.md
+  - 9. Archivio Fotografico: archivio.md

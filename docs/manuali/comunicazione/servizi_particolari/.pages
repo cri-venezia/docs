@@ -1,0 +1,5 @@
+# Definisce l'ordine della sidebar per la sezione Servizi Particolari
+nav:
+    - Panoramica: index.md
+    - 5.1 Sentiamoci in Salute: sentiamoci_in_salute.md
+    - 5.2 Manovre Salvavita: manovre_salvavita.md

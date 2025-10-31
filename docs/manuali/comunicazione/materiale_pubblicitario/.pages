@@ -1,0 +1,5 @@
+# Definisce l'ordine della sidebar per la sezione Materiale Pubblicitario
+nav:
+    - Panoramica: index.md
+    - 6.1 Autorizzazione Locandine: locandine.md
+    - 6.2 Locandine Standard: locandine_standard.md

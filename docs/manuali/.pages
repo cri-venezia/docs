@@ -1,0 +1,11 @@
+# File: docs/manuali/.pages
+# Ordina i diversi manuali disponibili
+
+title: Manuali del Comitato
+nav:
+  # Puntiamo alla sottocartella /comunicazione/
+  - Manuale Comunicazione: comunicazione/
+
+  # In futuro potrai aggiungere:
+  # - Manuale Logistica: logistica/
+  # - Manuale Segreteria: segreteria_manuale/
