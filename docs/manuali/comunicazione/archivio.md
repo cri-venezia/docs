@@ -13,11 +13,7 @@ Questo archivio è una risorsa preziosa per raccontare le nostre attività, pres
 
 Per aiutare a raccontare le attività del Comitato attraverso i tuoi occhi, puoi inviare il tuo materiale (foto e video selezionati, come da Sezione 3.1).
 
-!!! success **"Invia il tuo Materiale"**
+!!! success "Invia il tuo Materiale"
     Invia le foto e i video (sempre nel rispetto delle linee guida) all'indirizzo ufficiale dell'area Comunicazione:
     
     `comunicazione@crivenezia.it`
-
----
-
-⬅️ **[Pagina Precedente: Gruppo Giovani](gruppo_giovani.md)**

@@ -13,14 +13,11 @@ Tuttavia, questo deve avvenire nel rispetto delle regole generali di utilizzo di
 
 Quando un volontario pubblica contenuti (in particolare foto o video) che lo ritraggono in divisa o durante attività associabili alla Croce Rossa, deve attenersi scrupolosamente alle seguenti regole:
 
-!!! success **"DEVE Rispettare"**
+!!! success "DEVE Rispettare"
     * Il volontario **DEVE** sempre rispettare il **Codice Etico** dell'Associazione, mantenendo un comportamento decoroso e consono.
 
-!!! danger **"NON DEVE Pubblicare"**
+!!! danger "NON DEVE Pubblicare"
     * **NON DEVE** postare foto con volti riconoscibili di **minori**, **persone assistite** o persone a rischio di incolumità (vedi la sezione "Fotografie" per i dettagli sulla privacy).
     * **NON DEVE** effettuare e/o pubblicare foto o video che ritraggono lo **svolgimento di un soccorso** a un paziente.
     * **NON DEVE** condividere foto in divisa mentre **fuma** e/o **beve alcolici**.
 
----
-
-⬅️ **[Pagina Precedente: Panoramica Social](indexmd)** | ➡️ **[Prossima Pagina: Ruolo Brand Ambassador](ruolo_brand_ambassador.md)**

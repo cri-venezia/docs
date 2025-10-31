@@ -1,11 +1,11 @@
 /* Regole Globali */
 .md-typeset .admonition-title, .md-typeset summary {
     font-size: .8rem;
-    font-weight: inherit;
     color: var(--footer-dark);
+    font-weight: 700;
 }
 .md-typeset .admonition, .md-typeset details {
-    font-size: .8rem;
+    font-size: .8rem !important;
     color: var(--footer-dark);
 }
 .md-typeset :is(.admonition,details) {
@@ -27,3 +27,4 @@
   padding: 0 0 0 0.4rem;
   position: relative;
 }
+

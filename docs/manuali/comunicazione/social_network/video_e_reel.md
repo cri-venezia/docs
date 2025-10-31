@@ -25,9 +25,5 @@ Questa sezione descrive la procedura corretta per l'invio di video o reel realiz
 
 Se il materiale inviato rispetta i requisiti di qualità e privacy, l'area Comunicazione si occuperà di editarlo (se necessario) e pubblicarlo sui canali ufficiali (Facebook, Instagram, TikTok).
 
-!!! success **"Riconoscimento (Tag)"**
+!!! success "Riconoscimento (Tag)"
     Quando il video o reel viene pubblicato, i volontari che hanno realizzato il materiale **potranno essere taggati** (se indicato nella mail di invio) come artefici del contenuto.
-
----
-
-⬅️ **[Pagina Precedente: Post e Condivisione](post_e_condivisione_ufficiale/)** | ➡️ **[Prossima Sezione: Servizi Particolari](../servizi_particolari/)**

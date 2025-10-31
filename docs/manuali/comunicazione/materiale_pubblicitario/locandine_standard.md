@@ -17,9 +17,5 @@ I principali modelli di locandina standard attualmente in uso sono:
 * **Manovre Salvavita Pediatriche**
 * **Corso Base Volontari**
 
-!!! info **"Utilizzo"**
+!!! info "Utilizzo"
     Quando organizzi uno di questi eventi, fai riferimento all'area Comunicazione (`comunicazione@crivenezia.it`) per ottenere il file corretto da aggiornare.
-
----
-
-⬅️ **[Pagina Precedente: Autorizzazione Locandine](locandine.md)** | ➡️ **[Prossima Sezione: Contenuti](../contenuti.md)**

@@ -1,4 +1,6 @@
-# Definisce la sidebar per il Manuale di Comunicazione
+sort:
+  by: title
+
 nav:
   - Introduzione: index.md
   - 1. Identità Visiva: identita_visiva.md

@@ -20,9 +20,5 @@ Tutte le disposizioni descritte nelle sezioni precedenti (uso dell'emblema, foto
 
 La condivisione del materiale su questi canali deve attenersi alle medesime disposizioni descritte in questo manuale (in particolare la Sezione 4 - Social Network).
 
-!!! info **"Regola di Pubblicazione"**
+!!! info "Regola di Pubblicazione"
     **Favorire sempre prima la pubblicazione del materiale nei canali ufficiali del Comitato** e, solo successivamente, condividere (share) quel contenuto sui propri canali social (sia quelli del Gruppo Giovani che quelli personali).
-
----
-
-⬅️ **[Pagina Precedente: Contenuti](contenuti.md)** | ➡️ **[Prossima Pagina: Archivio Fotografico](archivio.md)**

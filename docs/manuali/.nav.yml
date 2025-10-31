@@ -1,9 +1,10 @@
-# File: docs/manuali/.pages
-# Ordina i diversi manuali disponibili
+sort:
+  by: title
 
 title: Manuali del Comitato
 nav:
   # Puntiamo alla sottocartella /comunicazione/
+  - Panoramica: index.md
   - Manuale Comunicazione: comunicazione/
 
   # In futuro potrai aggiungere:

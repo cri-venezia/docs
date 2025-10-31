@@ -23,9 +23,5 @@ La creazione di materiale fotografico e video è essenziale per poter comunicare
 * Esercitazioni, simulazioni ed emergenze
 * ...e ogni altra attività di Comitato.
 
-!!! info **"Invia il tuo materiale"**
+!!! info "Invia il tuo materiale"
     Ricorda di inviare il materiale selezionato (come descritto nella Sezione 3) a `comunicazione@crivenezia.it` per contribuire all'archivio e alla comunicazione ufficiale.
-
----
-
-⬅️ **[Pagina Precedente: Materiale Pubblicitario](../materiale_pubblicitario/)** | ➡️ **[Prossima Pagina: Gruppo Giovani](gruppo_giovani.md)**

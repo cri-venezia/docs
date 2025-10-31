@@ -1,4 +1,6 @@
-# Definisce l'ordine della sidebar per la sezione Servizi Particolari
+sort:
+  by: title
+
 nav:
     - Panoramica: index.md
     - 5.1 Sentiamoci in Salute: sentiamoci_in_salute.md

@@ -1,0 +1,8 @@
+sort:
+  sections: mixed
+
+nav:
+  - Panoramica: index.md
+  - CRI Corsi: cri-corsi/
+  - CRI Trasporti: cri-trasporti/
+  - Manuali: manuali/

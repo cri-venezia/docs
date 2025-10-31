@@ -51,7 +51,7 @@ Questo include, ad esempio:
 * Vittime di tratta
 * Minorenni
 
-### Gestione dei Minori
+### 2.3. Gestione dei Minori
 
 !!! warning "Obbligo di Liberatoria per Minori"
     Le fotografie che ritraggono **minori** devono *sempre* essere accompagnate dalla **liberatoria firmata** dai genitori o da chi ne fa le veci.

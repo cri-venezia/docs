@@ -1,4 +1,6 @@
-# Definisce l'ordine della sidebar per la sezione Social Network
+sort:
+  by: title
+
 nav:
     - Panoramica: index.md
     - 4.1 Comportamento Personale: comportamento_personale.md

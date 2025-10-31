@@ -23,9 +23,5 @@ Per garantire una promozione efficace e coordinata, è fondamentale seguire ques
     * L'area Comunicazione, ricevuta la locandina, si occupa della condivisione ufficiale sui canali social del Comitato.
     * La pubblicazione verrà effettuata **5 giorni prima** della data dell'evento per massimizzare la visibilità.
 
-!!! warning **"Importante"**
+!!! warning "Importante"
     È responsabilità del Referente di Servizio dell'UT inviare la locandina all'area Comunicazione con sufficiente anticipo per rispettare la tempistica di pubblicazione (almeno 5-6 giorni prima dell'evento).
-
----
-
-⬅️ **[Pagina Precedente: Panoramica Servizi](../)** | ➡️ **[Prossima Pagina: Manovre Salvavita](manovre_salvavita.md)**

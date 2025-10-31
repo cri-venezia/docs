@@ -23,9 +23,5 @@ Questa pagina descrive il flusso di comunicazione standardizzato per i corsi e g
         * Aggiornare la locandina standard (se necessario) con i nuovi dettagli.
         * Condividere la locandina e promuovere l'evento sui canali social del Comitato.
 
-!!! info **"Tempestività"**
+!!! info "Tempestività"
     È fondamentale che il Referente MS comunichi le date concordate il prima possibile per dare all'area Comunicazione il tempo necessario per preparare e diffondere il materiale promozionale.
-
----
-
-⬅️ **[Pagina Precedente: Sentiamoci in Salute](sentiamoci_in_salute.md)** | ➡️ **[Prossima Sezione: Materiale Pubblicitario](../materiale_pubblicitario/)**

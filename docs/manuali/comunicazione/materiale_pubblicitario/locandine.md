@@ -15,7 +15,7 @@ Tutte le locandine create *prima* di essere divulgate o pubblicate (sui social, 
 
 L'area Comunicazione verificherà la coerenza con l'immagine istituzionale e l'uso corretto dell'emblema.
 
-!!! danger **"Tempistica Autorizzazione Logo (60 Giorni)"**
+!!! danger "Tempistica Autorizzazione Logo (60 Giorni)"
     È fondamentale tenere presente che qualsiasi utilizzo del **logo** su materiale destinato all'esterno deve essere approvato a livello nazionale.
     
     Questa procedura di autorizzazione nazionale prevede una tempistica di **60 giorni**.
@@ -29,7 +29,3 @@ Se hai necessità di creare una nuova locandina o hai bisogno di supporto grafic
 * Invia la tua richiesta completa di dettagli (testi, date, concept) a:
     
     `comunicazione@crivenezia.it`
-
----
-
-⬅️ **[Pagina Precedente: Panoramica](../)** | ➡️ **[Prossima Pagina: Locandine Standard](locandine_standard.md)**

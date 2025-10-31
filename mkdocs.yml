@@ -5,6 +5,7 @@ site_name: "Documentazione CRI Venezia"
 site_url: "https://docs.crivenezia.it" # URL CDN di Bunny
 site_author: "CRI Comitato di Venezia"
 site_description: "Documentazione interna e manuali per volontari e staff."
+strict: false
 
 # -----------------------------------------------------------------
 # Configurazione Tema (Material for MkDocs)
@@ -21,12 +22,9 @@ theme:
   custom_dir: src/overrides
 
   features:
-    - navigation.prune
+    # - navigation.prune
     - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.instant
-    - navigation.instant.progress
-    - navigation.top
+    # - navigation.top
     - navigation.tracking
     - search.suggest
     - search.highlight
@@ -77,8 +75,7 @@ markdown_extensions:
 plugins:
   search:
     lang: it
-  awesome-nav:
-    flatten_single_child_sections: false
+  awesome-nav: {}
   tags: {}
   git-revision-date-localized:
     type: date
