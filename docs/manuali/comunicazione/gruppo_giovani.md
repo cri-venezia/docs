@@ -9,7 +9,7 @@ Questa sezione chiarisce le linee guida di comunicazione per il Gruppo Giovani d
 
 ## Nessuna Regola Differente
 
-!!! warning **"Principio Fondamentale"**
+!!! warning "Principio Fondamentale"
     I Giovani CRI fanno parte integrante del Comitato e **NON** hanno regole di comunicazione differenti da quelle esposte in questo manuale.
 
 Tutte le disposizioni descritte nelle sezioni precedenti (uso dell'emblema, fotografie, privacy, comportamento sui social, ecc.) si applicano integralmente anche ai Giovani.
